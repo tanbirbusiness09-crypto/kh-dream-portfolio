@@ -127,3 +127,110 @@
 .leadership-scroll .leadership-scenes{display:grid!important;gap:50px!important}
 .leadership-frame-sheen{animation:none!important}
 }
+
+
+/* ================================================================
+   03 — ORGANIC 3D LEADERSHIP BRANCH
+   Independent progressive enhancement. All cards remain visible
+   and in normal page order when JavaScript or motion is disabled.
+   ================================================================ */
+.leadership-branch{position:relative;isolation:isolate;background:#09101a;padding:0!important;border-block:1px solid rgba(215,185,132,.12);overflow:visible}
+.branch-track{position:relative}
+.branch-sticky{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 50% 44%,rgba(38,53,76,.66),transparent 50%),linear-gradient(180deg,#101927,#0a111d 56%,#070d16);padding:100px 0 56px}
+.branch-ambient{position:absolute;inset:-10%;pointer-events:none;z-index:-1;background:radial-gradient(circle at 51% 45%,rgba(226,187,118,.12),transparent 33%),radial-gradient(circle at 45% 62%,rgba(109,141,200,.12),transparent 34%);filter:blur(27px)}
+.branch-header,.branch-footer{position:relative;z-index:3}
+.branch-header .section-kicker{margin-bottom:16px}
+.branch-header-row{display:flex;align-items:flex-end;justify-content:space-between;gap:36px}
+.branch-header h2{font-size:clamp(3.4rem,5.9vw,6.3rem);line-height:1.08;letter-spacing:-.074em;font-weight:470;margin:0;white-space:nowrap}
+.branch-header h2 em{font-family:var(--serif);font-weight:400;font-style:normal;color:var(--gold)}
+.branch-header-row>p{font-size:12px;line-height:1.88;color:#a4b0bf;max-width:310px;margin:0 0 9px}
+.branch-stage{position:relative;overflow:hidden;perspective:1450px;perspective-origin:50% 42%;min-height:620px}
+.branch-world{position:relative;height:1650px;transform-style:preserve-3d;will-change:transform}
+.branch-world-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 25%,rgba(239,201,138,.045),transparent 25%),radial-gradient(circle at 50% 60%,rgba(128,166,218,.05),transparent 25%)}
+.branch-spine-art{position:absolute;left:50%;top:0;height:100%;width:220px;transform:translateX(-50%);overflow:visible;pointer-events:none}
+.branch-spine-shadow{fill:none;stroke:rgba(221,192,142,.085);stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+.branch-spine-line{fill:none;stroke:url(#leadershipBranchMetal);stroke-width:3.6;stroke-linecap:round;stroke-linejoin:round}
+.branch-arm{fill:none;stroke:url(#leadershipBranchMetal);stroke-width:2.4;stroke-linecap:round}
+.branch-node-dot{fill:#ecd2a2;stroke:#24344d;stroke-width:2}
+.branch-pairs{position:absolute;inset:0;list-style:none;margin:0;padding:0}
+.branch-pair{position:absolute;inset:auto 0;min-height:430px;transform-style:preserve-3d}
+.branch-pair-1{top:2.5%}
+.branch-pair-2{top:37.5%}
+.branch-pair-3{top:69%}
+.branch-card{position:absolute;width:min(36vw,425px);transform-style:preserve-3d;backface-visibility:hidden;will-change:transform}
+.branch-card-left{right:calc(50% + 78px)}
+.branch-card-right{left:calc(50% + 78px)}
+.branch-pair-1 .branch-card-left{top:0}
+.branch-pair-1 .branch-card-right{top:88px}
+.branch-pair-2 .branch-card-left{top:106px}
+.branch-pair-2 .branch-card-right{top:0}
+.branch-pair-3 .branch-card-left{top:9px}
+.branch-pair-3 .branch-card-right{top:98px}
+.branch-card-figure{position:relative;margin:0;overflow:hidden;background:linear-gradient(145deg,rgba(26,37,51,.98),rgba(12,21,34,.98));border:1px solid rgba(221,186,126,.27);box-shadow:0 32px 80px rgba(0,0,0,.38),0 0 0 7px rgba(225,190,126,.024)}
+.branch-card-figure:after{content:'';position:absolute;pointer-events:none;inset:0;background:linear-gradient(116deg,rgba(255,255,255,.12),transparent 29%,transparent 68%,rgba(255,255,255,.03));opacity:.68}
+.branch-card-media{position:relative;aspect-ratio:1.4;overflow:hidden;background:#1b2636}
+.branch-card-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transform:scale(1.035);will-change:transform;transition:transform .45s ease}
+.branch-card-copy{padding:17px 21px 22px;position:relative;z-index:2}
+.branch-card-index{display:block;color:var(--gold);font-size:9px;letter-spacing:.17em;margin-bottom:8px}
+.branch-card-copy h3{font-weight:470;letter-spacing:-.045em;font-size:clamp(1.35rem,2.05vw,2.15rem);line-height:1.15;margin:0}
+.branch-card-copy p{color:#aab5c3;font-size:12px;line-height:1.75;margin:9px 0 0;max-width:330px}
+.branch-card:hover .branch-card-media img{transform:scale(1.08)}
+.branch-footer{display:flex;align-items:center;gap:28px;color:var(--gold)}
+.branch-hint{white-space:nowrap;font-size:9px;letter-spacing:.17em;color:#cfbda2}
+.branch-hint span{display:inline-block;margin-left:10px}
+.branch-progress{flex:1;height:1px;background:rgba(255,255,255,.19);overflow:hidden}
+.branch-progress span{display:block;background:var(--gold);height:100%;width:0;transition:width .12s linear}
+.branch-count{white-space:nowrap;font-variant-numeric:tabular-nums}
+.branch-count i{font-style:normal;font-size:10px;color:#8e98a6}
+@media(min-width:961px) and (min-height:720px) and (prefers-reduced-motion:no-preference){
+  .leadership-branch.branch-desktop-ready .branch-track{height:380svh}
+  .leadership-branch.branch-desktop-ready .branch-sticky{position:sticky;top:0;height:100svh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(88px,11vh,120px) 0 clamp(24px,4vh,42px)}
+  .leadership-branch.branch-desktop-ready .branch-header h2{font-size:clamp(3.1rem,5.45vw,6rem)}
+  .leadership-branch.branch-desktop-ready .branch-stage{flex:1;min-height:0;margin:14px auto 10px}
+  .leadership-branch.branch-desktop-ready .branch-pair{opacity:.35}
+}
+@media(max-width:960px), (max-height:719px){
+  .branch-sticky{padding:95px 0 80px}
+  .branch-header-row{display:block}
+  .branch-header h2{font-size:clamp(3rem,8vw,5.6rem);white-space:normal}
+  .branch-header-row>p{margin:16px 0 0;max-width:540px}
+  .branch-stage{height:auto;min-height:0;overflow:visible;perspective:none}
+  .branch-world{height:auto;min-height:0;transform:none!important}
+  .branch-spine-art{height:100%;min-height:1400px}
+  .branch-pairs{position:relative;display:grid;gap:105px;padding:32px 0 40px}
+  .branch-pair{position:relative;top:auto!important;min-height:430px;opacity:1!important;filter:none!important}
+  .branch-card{width:calc(50% - 64px);max-width:none}
+  .branch-card-left{right:calc(50% + 63px)}
+  .branch-card-right{left:calc(50% + 63px)}
+  .branch-pair-1 .branch-card-left{top:0}
+  .branch-pair-1 .branch-card-right{top:80px}
+  .branch-pair-2 .branch-card-left{top:100px}
+  .branch-pair-2 .branch-card-right{top:0}
+  .branch-pair-3 .branch-card-left{top:0}
+  .branch-pair-3 .branch-card-right{top:105px}
+  .branch-hint{display:none}
+  .leadership-branch.branch-mobile-ready .branch-pair{opacity:.12!important;transform:translateY(48px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+  .leadership-branch.branch-mobile-ready .branch-pair.is-inview{opacity:1!important;transform:translateY(0)}
+}
+@media(max-width:650px){
+  .branch-sticky{padding:82px 0 72px}
+  .branch-header h2{font-size:clamp(2.75rem,11.6vw,5rem)}
+  .branch-header-row>p{font-size:12px}
+  .branch-spine-art{left:13px;width:52px;transform:none;height:100%;min-height:0;opacity:.72}
+  .branch-pairs{gap:72px;padding:30px 0}
+  .branch-pair{display:grid;gap:15px;padding-left:46px;min-height:0}
+  .branch-card{position:relative;top:auto!important;left:auto!important;right:auto!important;width:auto;max-width:none}
+  .branch-card-left{margin-right:24px}
+  .branch-card-right{margin-left:24px}
+  .branch-card-media{aspect-ratio:1.28}
+  .branch-card-copy{padding:14px 15px 19px}
+  .branch-card-copy h3{font-size:clamp(1.35rem,6vw,1.95rem)}
+  .branch-card-copy p{font-size:11px}
+  .branch-footer{gap:15px}
+}
+@media(prefers-reduced-motion:reduce){
+  .leadership-branch .branch-track{height:auto!important}
+  .leadership-branch .branch-sticky{height:auto!important;position:relative!important}
+  .leadership-branch .branch-world{transform:none!important}
+  .leadership-branch .branch-pair,.leadership-branch .branch-card{opacity:1!important;filter:none!important;transform:none!important;transition:none!important}
+}

@@ -1,0 +1,8 @@
+{
+  "name":"kawser-hamid-executive-dimension",
+  "version":"1.0.0",
+  "private":true,
+  "description":"Premium 3D-style portfolio landing page for Kawser Hamid",
+  "scripts":{"start":"node server.js"},
+  "engines":{"node":">=18"}
+}

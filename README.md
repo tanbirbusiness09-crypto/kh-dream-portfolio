@@ -28,7 +28,8 @@ Upload everything, including `images/`, `styles.css`, `script.js`, and `index.ht
 - Premium button interactions
 - Perspective tilt cards with motion-reduction support
 - Scroll-triggered reveals via IntersectionObserver
-- Touch/keyboard accessible scrolling leadership gallery with arrow buttons
+- Scroll-driven Leadership in Focus: five cinematic 2.5D scenes with pinned desktop storytelling and reversible perspective transitions
+- Mobile leadership scenes reveal naturally while scrolling, without pinning, arrows or carousel
 - Perspective portrait switcher (four suit variations)
 - Responsive mobile navigation, sticky transparent/glass header
 - Reduced-motion and touch-device fallbacks

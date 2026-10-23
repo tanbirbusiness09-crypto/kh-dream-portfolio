@@ -111,103 +111,117 @@
     });
   }
 
-  // Leadership scroll narrative: pinned reversible 2.5D sequence on desktop.
-  // On mobile and for reduced-motion, chapters remain normal document content.
+
+  // Organic Leadership Branch — scroll moves through paired left/right scenes.
+  // Desktop: pinned timeline, reversible 3D depth. Mobile: natural scroll.
   const leadership = document.getElementById('leadership');
   if (leadership) {
-    const track = document.getElementById('leadershipScrollTrack');
-    const stage = document.getElementById('leadershipStage');
-    const scenes = [...leadership.querySelectorAll('.leadership-scene')];
-    const progressBar = document.getElementById('leadershipProgress');
-    const count = document.getElementById('leadershipCount');
-    const desktopScenes = window.matchMedia('(min-width: 961px) and (prefers-reduced-motion: no-preference)');
-    const mobileScenes = window.matchMedia('(max-width: 960px) and (prefers-reduced-motion: no-preference)');
-    let chapterObserver = null;
-    let currentMode = '';
-    let scrollFrame = 0;
+    const track = document.getElementById('branchTrack');
+    const stage = document.getElementById('branchStage');
+    const world = document.getElementById('branchWorld');
+    const pairs = [...leadership.querySelectorAll('.branch-pair')];
+    const progressEl = document.getElementById('branchProgress');
+    const countEl = document.getElementById('branchCount');
+    const desktopBranch = window.matchMedia('(min-width: 961px) and (min-height: 720px) and (prefers-reduced-motion: no-preference)');
+    const mobileBranch = window.matchMedia('(max-width: 960px), (max-height: 719px)');
+    let activeMode = '';
+    let frame = 0;
+    let observer = null;
 
-    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-    const ease = t => t * t * (3 - 2 * t);
+    const clip = (v, low, high) => Math.max(low, Math.min(high, v));
+    const smoothstep = t => t * t * (3 - 2 * t);
 
-    function updateLeadershipScroll() {
-      scrollFrame = 0;
-      if (!desktopScenes.matches) return;
-      const rect = track.getBoundingClientRect();
-      const travel = Math.max(1, track.offsetHeight - window.innerHeight);
-      const progress = clamp(-rect.top / travel, 0, 1);
-      const position = progress * (scenes.length - 1);
-      const nearest = clamp(Math.round(position), 0, scenes.length - 1);
+    function drawBranch() {
+      frame = 0;
+      if (!desktopBranch.matches) return;
+      const progress = clip(-track.getBoundingClientRect().top /
+        Math.max(1, track.offsetHeight - window.innerHeight), 0, 1);
+      const maxShift = Math.max(0, world.offsetHeight - stage.clientHeight);
+      const worldY = -maxShift * progress;
+      world.style.transform = 'translate3d(0,' + worldY.toFixed(2) + 'px,0)';
+      progressEl.style.width = (progress * 100).toFixed(2) + '%';
 
-      // Scroll distance drives perspective, depth, and opposing exit/entrance.
-      scenes.forEach((scene, i) => {
-        const relative = i - position;
-        const distance = Math.abs(relative);
-        const direction = Math.sign(relative);
-        const visible = distance < 1.15;
-        const amount = ease(clamp(distance, 0, 1));
-        const x = relative * 32;
-        const y = distance * 35;
-        const z = -amount * 440;
-        const rotation = -direction * amount * 23;
-        const tilt = amount * 6;
-        const scale = 1 - amount * .13;
-        scene.style.transform = `translate3d(${x.toFixed(2)}vw, ${y.toFixed(1)}px, ${z.toFixed(0)}px) rotateY(${rotation.toFixed(1)}deg) rotateX(${tilt.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
-        scene.style.opacity = String(visible ? clamp(1 - amount * .99, 0, 1) : 0);
-        scene.style.zIndex = String(100 - Math.round(distance * 10));
-        scene.classList.toggle('is-current', i === nearest);
+      const focalY = stage.clientHeight * 0.49;
+      let nearest = 0;
+      let best = -1;
+      pairs.forEach((pair, i) => {
+        const cardCenter = pair.offsetTop + pair.offsetHeight * 0.5 + worldY;
+        const relative = (cardCenter - focalY) / Math.max(1, stage.clientHeight);
+        const focus = smoothstep(clip(1 - Math.abs(relative) * 1.35, 0, 1));
+        const fading = 1 - focus;
+        pair.style.opacity = String(.13 + focus * .87);
+        pair.style.filter = 'blur(' + (fading * 1.4).toFixed(2) + 'px)';
+        pair.style.zIndex = String(10 + Math.round(focus * 20));
+        pair.classList.toggle('is-current', focus > .65);
+
+        const cards = pair.querySelectorAll('.branch-card');
+        cards.forEach((card, side) => {
+          const sign = side === 0 ? -1 : 1;
+          const shiftX = sign * 32 * fading;
+          const shiftY = relative * 35 + fading * (side === 0 ? -15 : 15);
+          const shiftZ = -155 * fading;
+          const rotateY = sign * (13 * fading + 1.5);
+          const rotateX = 6 * fading;
+          const scale = 1 - .09 * fading;
+          card.style.transform =
+            'translate3d(' + shiftX.toFixed(2) + 'px,' + shiftY.toFixed(2) + 'px,' +
+            shiftZ.toFixed(2) + 'px) rotateY(' + rotateY.toFixed(2) +
+            'deg) rotateX(' + rotateX.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')';
+        });
+
+        if (focus > best) { best = focus; nearest = i; }
       });
-      progressBar.style.width = `${(progress * 100).toFixed(2)}%`;
-      count.innerHTML = `${String(nearest + 1).padStart(2, '0')} <i>/ ${String(scenes.length).padStart(2, '0')}</i>`;
-      stage.style.setProperty('--story-progress', String(progress));
+      countEl.innerHTML = String(nearest + 1).padStart(2, '0') +
+        ' <i>/ ' + String(pairs.length).padStart(2, '0') + '</i>';
     }
 
-    function requestLeadershipFrame() {
-      if (!desktopScenes.matches || scrollFrame) return;
-      scrollFrame = window.requestAnimationFrame(updateLeadershipScroll);
+    function requestBranchFrame() {
+      if (!desktopBranch.matches || frame) return;
+      frame = requestAnimationFrame(drawBranch);
     }
 
-    function configureLeadershipMode() {
-      const nextMode = desktopScenes.matches ? 'desktop' : mobileScenes.matches ? 'mobile' : 'static';
-      if (nextMode === currentMode) {
-        requestLeadershipFrame();
-        return;
-      }
-      currentMode = nextMode;
-      if (chapterObserver) { chapterObserver.disconnect(); chapterObserver = null; }
-      leadership.classList.toggle('leadership-3d-ready', nextMode === 'desktop');
-      leadership.classList.toggle('leadership-mobile-ready', nextMode === 'mobile');
-      scenes.forEach(scene => {
-        scene.removeAttribute('style');
-        scene.classList.remove('is-inview');
-        scene.classList.remove('is-current');
+    function setBranchMode() {
+      const mode = desktopBranch.matches ? 'desktop' :
+        (!reduceMotion && mobileBranch.matches ? 'mobile' : 'static');
+      if (mode === activeMode) { requestBranchFrame(); return; }
+      activeMode = mode;
+      if (observer) { observer.disconnect(); observer = null; }
+
+      leadership.classList.toggle('branch-desktop-ready', mode === 'desktop');
+      leadership.classList.toggle('branch-mobile-ready', mode === 'mobile');
+      world.style.transform = '';
+      pairs.forEach(pair => {
+        pair.style.cssText = '';
+        pair.classList.remove('is-current', 'is-inview');
+        pair.querySelectorAll('.branch-card').forEach(card => { card.style.transform = ''; });
       });
-      progressBar.style.width = nextMode === 'desktop' ? '0%' : '100%';
-      count.innerHTML = `01 <i>/ ${String(scenes.length).padStart(2, '0')}</i>`;
-      if (nextMode === 'desktop') {
-        updateLeadershipScroll();
-      } else if (nextMode === 'mobile' && 'IntersectionObserver' in window) {
-        chapterObserver = new IntersectionObserver(entries => {
+      progressEl.style.width = mode === 'desktop' ? '0%' : '100%';
+
+      if (mode === 'desktop') {
+        requestAnimationFrame(drawBranch);
+      } else if (mode === 'mobile' && 'IntersectionObserver' in window) {
+        observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('is-inview');
-              chapterObserver.unobserve(entry.target);
+              observer.unobserve(entry.target);
             }
           });
-        }, { rootMargin: '0px 0px -8% 0px', threshold: .12 });
-        scenes.forEach(scene => chapterObserver.observe(scene));
+        }, { rootMargin: '0px 0px -8% 0px', threshold: .1 });
+        pairs.forEach(pair => observer.observe(pair));
       } else {
-        scenes.forEach(scene => scene.classList.add('is-inview'));
+        pairs.forEach(pair => pair.classList.add('is-inview'));
       }
     }
 
-    window.addEventListener('scroll', requestLeadershipFrame, { passive: true });
+    window.addEventListener('scroll', requestBranchFrame, { passive:true });
     window.addEventListener('resize', () => {
-      configureLeadershipMode();
-      requestLeadershipFrame();
-    }, { passive: true });
-    desktopScenes.addEventListener('change', configureLeadershipMode);
-    mobileScenes.addEventListener('change', configureLeadershipMode);
-    configureLeadershipMode();
+      setBranchMode();
+      requestBranchFrame();
+    }, { passive:true });
+    desktopBranch.addEventListener('change', setBranchMode);
+    mobileBranch.addEventListener('change', setBranchMode);
+    setBranchMode();
   }
 
   // Four alternate cutouts / no portrait is AI-reconstructed or changed.

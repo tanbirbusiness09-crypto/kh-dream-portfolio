@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kh-dream-portfolio.vercel.app/sitemap.xml

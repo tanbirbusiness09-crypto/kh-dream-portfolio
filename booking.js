@@ -19,6 +19,10 @@
       ['Address', get('customerAddress')],
       ['Consultation topic', get('serviceType')],
     ];
+    const date = get('preferredDate');
+    const format = get('meetingFormat');
+    if (date) fields.push(['Preferred consultation date (not confirmed)', date]);
+    if (format) fields.push(['Preferred meeting format (not confirmed)', format]);
     if (get('customerNote')) fields.push(['Additional details', get('customerNote')]);
     return 'Hello KH Dream Services, I would like to request a consultation with Kawser Hamid.\n\n'
       + fields.map(([label, value]) => label + ': ' + value).join('\n')

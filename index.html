@@ -339,6 +339,29 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
   <link rel="stylesheet" href="obsidian-theme.css" />
   <link rel="stylesheet" href="executive-v5.css" />
   <script defer src="v5-motion.js"></script>
+  <link rel="canonical" href="https://kh-dream-portfolio.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kh-dream-portfolio.vercel.app/" />
+  <meta property="og:site_name" content="Kawser Hamid — Executive Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+   {"@type":"Person","@id":"https://kh-dream-portfolio.vercel.app/#kawser-hamid",
+    "name":"Kawser Hamid","jobTitle":"Founder & CEO",
+    "worksFor":{"@id":"https://kh-dream-portfolio.vercel.app/#kh-dream-services"},
+    "url":"https://kh-dream-portfolio.vercel.app/"},
+   {"@type":"Organization","@id":"https://kh-dream-portfolio.vercel.app/#kh-dream-services",
+    "name":"KH Dream Services Ltd","url":"https://khdreamservices.com"},
+   {"@type":"WebSite","@id":"https://kh-dream-portfolio.vercel.app/#website",
+    "name":"Kawser Hamid — Executive Portfolio",
+    "url":"https://kh-dream-portfolio.vercel.app/"}
+  ]}
+  </script>
+  <link rel="stylesheet" href="executive-v5-complete.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script defer src="executive-v5-complete.js"></script>
 </head>
 <body>
   <div class="studio-progress" id="studioProgress" aria-hidden="true"><span></span></div>
@@ -375,7 +398,7 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
     <main>
       <!-- CINEMATIC HERO -->
       <section class="hero studio-section" data-studio="arrival" id="hero" aria-labelledby="heroTitle">
-        <div class="studio-hero-depth" aria-hidden="true"><span class="studio-horizon"></span><span class="studio-horizon studio-horizon-secondary"></span><span class="studio-hero-aura"></span></div>
+        <div class="v6-backdrop-layer" aria-hidden="true"></div><div class="studio-hero-depth" aria-hidden="true"><span class="studio-horizon"></span><span class="studio-horizon studio-horizon-secondary"></span><span class="studio-hero-aura"></span></div>
         <span class="studio-hero-sideword" aria-hidden="true">THE EXECUTIVE DIMENSION</span>
         <div class="hero-mesh" aria-hidden="true"></div>
         <div class="hero-grid" aria-hidden="true"></div>
@@ -383,7 +406,7 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
         <div class="hero-content container">
           <div class="hero-intro" data-reveal>
             <div class="eyebrow"><span class="eyebrow-line"></span> THE PERSON BEHIND THE VISION</div>
-            <p class="hero-pretitle">Welcome to the world of</p>
+            <p class="hero-pretitle">Welcome to the world of <span class="v6-hero-underline" aria-hidden="true"></span></p>
             <h1 id="heroTitle">KAWSER<br/><span>HAMID<span class="h1-period">.</span></span></h1>
             <div class="hero-role"><span class="role-line"></span> Founder & CEO <span class="role-separator">/</span> KH Dream Services Ltd</div>
             <p class="hero-description">Creating opportunities, connecting ambitions, and building meaningful businesses in Saudi Arabia and beyond.</p>
@@ -405,7 +428,7 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
             <div class="hero-visual-label hero-label-right" data-depth="0.25">BASED IN <strong>RIYADH, KSA</strong></div>
           </div>
           <div class="hero-footer">
-            <span class="hero-index"><strong>01</strong><span></span>05</span>
+            <span class="hero-index"><strong>01</strong><span></span>10</span>
             <div class="hero-credentials"><span class="gold-star">✳</span> Business Strategy <i></i> Corporate Solutions <i></i> Strategic Growth</div>
             <a href="#about" class="scroll-indicator">SCROLL TO EXPLORE <span class="scroll-arrow">↓</span></a>
           </div>
@@ -596,13 +619,124 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
         </div>
       </section>
 
+
+      <!-- EXECUTIVE DIMENSION 5.0 / REAL-WORLD SERVICE FOCUS -->
+      <section class="v6-section v6-solutions studio-section" data-studio="solutions" id="solutions" aria-labelledby="solutionsTitle">
+        <div class="v6-wrap">
+          <div class="v6-feature-lead">
+            <div class="v6-motion-title">
+              <div class="v6-eyebrow">06 / FOCUSED SOLUTIONS</div>
+              <h2 class="v6-heading" id="solutionsTitle">Where clarity<br/><em>creates momentum.</em></h2>
+            </div>
+            <p class="v6-lede v6-motion-title">Whether entering the Saudi market or strengthening an existing operation, a considered strategy begins by understanding the <strong>business objective, practical requirements and next decisions.</strong></p>
+          </div>
+          <div class="v6-focus-grid">
+            <article class="v6-focus v6-motion-card">
+              <span class="v6-focus-index">01 / MARKET ENTRY</span>
+              <h3>Saudi investor<br/>and business setup</h3>
+              <p>Explore the appropriate business activity, licensing pathway, required documents and professional support for establishing a business in Saudi Arabia.</p>
+              <a class="v6-focus-link" href="/booking">Discuss market entry <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="v6-focus v6-motion-card">
+              <span class="v6-focus-index">02 / CORPORATE OPERATIONS</span>
+              <h3>Corporate<br/>readiness &amp; compliance</h3>
+              <p>Discuss VAT, tax, accounting coordination and the practical steps needed to make informed decisions about ongoing obligations.</p>
+              <a class="v6-focus-link" href="/booking">Discuss compliance <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="v6-focus v6-motion-card">
+              <span class="v6-focus-index">03 / LONG-TERM DIRECTION</span>
+              <h3>Growth, strategy<br/>&amp; opportunities</h3>
+              <p>Work through business priorities, expansion questions, partnership considerations and a structured way to evaluate potential next steps.</p>
+              <a class="v6-focus-link" href="/booking">Explore a strategy session <span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+          <p class="v6-journey-note">Services are discussed according to the client's situation. Licensing, approval and regulatory outcomes depend on applicable requirements and relevant authorities; no approval is guaranteed.</p>
+        </div>
+      </section>
+
+      <!-- EXECUTIVE DIMENSION 5.0 / COLLABORATION PROCESS -->
+      <section class="v6-section v6-journey studio-section" data-studio="process" id="process" aria-labelledby="processTitle">
+        <div class="v6-wrap v6-journey-grid">
+          <div class="v6-journey-head v6-motion-title">
+            <div class="v6-eyebrow">07 / HOW WE BEGIN</div>
+            <h2 class="v6-heading" id="processTitle">A thoughtful<br/><em>way forward.</em></h2>
+            <p class="v6-lede">Every business conversation is different. A clear process makes it easier to move from questions to practical next steps without premature promises.</p>
+            <a href="/booking" class="btn btn-gold">Request a consultation <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="v6-journey-cards">
+            <article class="v6-journey-step v6-motion-card"><strong>01 — Understand your goal</strong><p>Share your objectives, location, business activity and the questions you need to answer.</p></article>
+            <article class="v6-journey-step v6-motion-card"><strong>02 — Explore the options</strong><p>Review the relevant considerations, information gaps and potential pathways with the team.</p></article>
+            <article class="v6-journey-step v6-motion-card"><strong>03 — Define the next steps</strong><p>Discuss a practical plan, any information still needed and how follow-up can proceed.</p></article>
+            <article class="v6-journey-step v6-motion-card"><strong>04 — Stay connected</strong><p>Continue through the agreed communication channel as requirements and priorities evolve.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXECUTIVE DIMENSION 5.0 / ARTICLES & EDUCATION -->
+      <section class="v6-section v6-insights studio-section" data-studio="insights" id="insights" aria-labelledby="insightsTitle">
+        <div class="v6-wrap">
+          <div class="v6-feature-lead">
+            <div class="v6-motion-title">
+              <div class="v6-eyebrow">08 / EXECUTIVE PERSPECTIVES</div>
+              <h2 class="v6-heading" id="insightsTitle">Questions worth<br/><em>asking first.</em></h2>
+            </div>
+            <p class="v6-lede v6-motion-title">Useful starting points for entrepreneurs and investors. These editorial notes are general information, not professional legal or tax opinions.</p>
+          </div>
+          <div class="v6-insights-grid">
+            <article class="v6-insight v6-motion-card">
+              <span class="v6-tag">Saudi market entry / Guide 01</span>
+              <h3>What should you clarify before applying for an investor license?</h3>
+              <p>Business activities, ownership structure, documentation and eligibility can affect the pathway. Start with clear facts about your intended operations.</p>
+              <a class="v6-insight-link" href="/booking">Ask about your situation <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="v6-insight v6-motion-card">
+              <span class="v6-tag">Corporate planning / Guide 02</span>
+              <h3>Why is compliance planning part of a growth strategy?</h3>
+              <p>Registration, records, tax and accounting requirements can shape operational decisions. Planning should evolve alongside the business.</p>
+              <a class="v6-insight-link" href="#faq">Read common questions <span aria-hidden="true">↘</span></a>
+            </article>
+            <article class="v6-insight v6-motion-card">
+              <span class="v6-tag">Business strategy / Guide 03</span>
+              <h3>How do you make a consultation more productive?</h3>
+              <p>Prepare your objectives, existing company details, target activities and outstanding questions. Clear preparation helps focus the discussion.</p>
+              <a class="v6-insight-link" href="/booking">Prepare a consultation <span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXECUTIVE DIMENSION 5.0 / ANSWERS -->
+      <section class="v6-section v6-qa studio-section" data-studio="faq" id="faq" aria-labelledby="faqTitle">
+        <div class="v6-wrap v6-qa-layout">
+          <div class="v6-motion-title">
+            <div class="v6-eyebrow">09 / COMMON QUESTIONS</div>
+            <h2 class="v6-heading" id="faqTitle">Before we<br/><em>begin.</em></h2>
+            <p class="v6-lede">A few useful answers about what to expect when contacting Kawser Hamid and KH Dream Services.</p>
+          </div>
+          <div class="v6-faq-list">
+            <details class="v6-faq"><summary>How can I request a consultation?</summary><div class="v6-answer">Select Book Consultation anywhere on this website. Enter your name, email, phone number, address and consultation topic. The form prepares a WhatsApp request that you must send before the team can respond.</div></details>
+            <details class="v6-faq"><summary>Does submitting the form confirm a meeting?</summary><div class="v6-answer">No. Your request is an enquiry only. A meeting date and format are confirmed after the team reviews your message and replies.</div></details>
+            <details class="v6-faq"><summary>Can you assist with Saudi investor licensing?</summary><div class="v6-answer">Investor licensing and business-establishment questions are part of the areas available for discussion. Requirements differ by business activity, applicant circumstances and authority rules; no approval can be promised.</div></details>
+            <details class="v6-faq"><summary>What information should I prepare?</summary><div class="v6-answer">Consider your proposed business activity, goals, existing company details if applicable, target market and any questions about documents or operations. Do not send sensitive documents through the public website form.</div></details>
+            <details class="v6-faq"><summary>Are consultations offered only in Riyadh?</summary><div class="v6-answer">The portfolio is based in Riyadh, Saudi Arabia. Use the booking form to ask about your location and whether a remote conversation may be arranged; availability is confirmed by the team.</div></details>
+            <details class="v6-faq"><summary>Where can I see the company website?</summary><div class="v6-answer">Visit <a href="https://khdreamservices.com" target="_blank" rel="noopener noreferrer">KH Dream Services</a> for company information or use the consultation button to submit a question.</div></details>
+          </div>
+        </div>
+        <div class="v6-wrap">
+          <div class="v6-closing">
+            <p>Have a more specific question? A focused consultation request is the best next step.</p>
+            <a class="btn btn-gold" href="/booking">Book a private consultation <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
       <!-- CONTACT -->
       <section class="contact studio-section" data-studio="contact" id="contact" aria-labelledby="contactTitle">
         <div class="studio-contact-portal" aria-hidden="true"><span class="studio-portal-ring"></span><span class="studio-portal-ring two"></span></div>
         <div class="contact-glow" aria-hidden="true"></div>
         <div class="container contact-inner">
           <div class="contact-content" data-reveal>
-            <div class="section-kicker"><span>06 / LET'S CONNECT</span><span class="kicker-line"></span></div>
+            <div class="section-kicker"><span>10 / LET'S CONNECT</span><span class="kicker-line"></span></div>
             <p class="contact-overline">HAVE AN IDEA OR BUSINESS AMBITION?</p>
             <h2 id="contactTitle">Let's create<br/><em>what's next.</em></h2>
             <p>Whether you're exploring a business opportunity or planning the next stage of growth, let's start the conversation.</p>
@@ -614,7 +748,7 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
       </section>
     </main>
 
-    <footer class="footer"><div class="container"><div class="footer-main"><div><a class="footer-logo" href="#top">KH<span>.</span></a><p>Kawser Hamid<br/>Founder & CEO, KH Dream Services Ltd</p></div><div class="footer-nav"><a href="#about">About</a><a href="#expertise">Expertise</a><a href="#leadership">Leadership</a><a href="/booking">Booking</a><a href="#contact">Contact</a></div><a class="footer-back" href="#top" aria-label="Back to top">↑</a></div><div class="footer-bottom"><span>© <span id="copyrightYear">2026</span> KAWSER HAMID. ALL RIGHTS RESERVED.</span><span>VISION <b>✳</b> TRUST <b>✳</b> IMPACT</span><span>MADE WITH PURPOSE.</span></div></div></footer>
+    <footer class="footer"><div class="container"><div class="footer-main"><div><a class="footer-logo" href="#top">KH<span>.</span></a><p>Kawser Hamid<br/>Founder & CEO, KH Dream Services Ltd</p></div><div class="footer-nav"><a href="#about">About</a><a href="#expertise">Expertise</a><a href="#leadership">Leadership</a><a href="#insights">Insights</a><a href="#faq">FAQ</a><a href="/booking">Booking</a><a href="#contact">Contact</a></div><a class="footer-back" href="#top" aria-label="Back to top">↑</a></div><div class="footer-bottom"><span>© <span id="copyrightYear">2026</span> KAWSER HAMID. ALL RIGHTS RESERVED.</span><span>VISION <b>✳</b> TRUST <b>✳</b> IMPACT</span><span>MADE WITH PURPOSE.</span></div></div></footer>
   </div>
 
   <!-- CONSULTATION BOOKING: accessible sliding dialog with /booking URL -->
@@ -673,6 +807,21 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
                 <label for="bookingAddress">City / Address *</label>
                 <input id="bookingAddress" name="customerAddress" type="text" autocomplete="street-address" required maxlength="220" placeholder="City, district or complete address" />
               </div>
+              <div class="booking-form-grid">
+                <div class="booking-field">
+                  <label for="bookingDate">Preferred date (optional)</label>
+                  <input id="bookingDate" name="preferredDate" type="date" autocomplete="off" />
+                </div>
+                <div class="booking-field">
+                  <label for="bookingFormat">Meeting format (optional)</label>
+                  <select id="bookingFormat" name="meetingFormat">
+                    <option value="">To be discussed</option>
+                    <option value="Video call">Video call</option>
+                    <option value="Phone call">Phone call</option>
+                    <option value="In person (subject to availability)">In person (subject to availability)</option>
+                  </select>
+                </div>
+              </div>
               <div class="booking-field">
                 <label for="bookingNote">Tell us a little more (optional)</label>
                 <textarea id="bookingNote" name="customerNote" maxlength="500" rows="3" placeholder="What would you like to discuss?"></textarea>
@@ -685,7 +834,7 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
                 <span>Continue to WhatsApp</span><span class="booking-submit-arrow" aria-hidden="true">↗</span>
               </button>
               <button class="booking-copy" id="bookingCopy" type="button">Copy my request instead ↗</button>
-              <p class="booking-meta">No payment is taken here. Your form is not saved on this website; please send the prepared message in WhatsApp to request an appointment.</p>
+              <p class="booking-meta">No payment is taken here. Your form is not saved on this website. A preferred date is only a request; please send the prepared message in WhatsApp and await the team’s confirmation.</p>
               <div id="bookingResult" class="booking-result" aria-live="polite"></div>
             </form>
           </div>

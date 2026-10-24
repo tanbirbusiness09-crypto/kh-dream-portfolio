@@ -240,5 +240,6 @@ window.__KH_BN_DICTIONARY__ = {
   "Open WhatsApp request again ↗": "WhatsApp অনুরোধ আবার খুলুন ↗",
   "Details copied.": "তথ্য কপি হয়েছে।",
   "You can paste your consultation request into WhatsApp or email. Copying does not submit a booking.": "আপনার কনসালটেশন অনুরোধ WhatsApp বা ইমেইলে পেস্ট করতে পারবেন। শুধু কপি করলে বুকিং পাঠানো হয় না।",
-  "Automatic copy is unavailable in this browser. Please use the WhatsApp button to prepare your booking request.": "এই ব্রাউজারে স্বয়ংক্রিয় কপি সম্ভব নয়। WhatsApp বাটন ব্যবহার করে অনুরোধ প্রস্তুত করুন।"
+  "Automatic copy is unavailable in this browser. Please use the WhatsApp button to prepare your booking request.": "এই ব্রাউজারে স্বয়ংক্রিয় কপি সম্ভব নয়। WhatsApp বাটন ব্যবহার করে অনুরোধ প্রস্তুত করুন।",
+  "Founder & CEO, KH Dream Services Ltd": "প্রতিষ্ঠাতা ও প্রধান নির্বাহী, KH Dream Services Ltd"
 };

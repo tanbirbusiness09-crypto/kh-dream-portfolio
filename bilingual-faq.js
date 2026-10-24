@@ -106,7 +106,9 @@
   function getCopy(value, language) {
     const clean = String(value).replace(/\s+/g, ' ').trim();
     if (language === 'bn' && Object.hasOwn(dict, clean)) {
-      return value.replace(clean, dict[clean]);
+      const before = value.match(/^\s*/)?.[0] || '';
+      const after = value.match(/\s*$/)?.[0] || '';
+      return before + dict[clean] + after;
     }
     return value;
   }

@@ -196,6 +196,110 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
   </style>
   <script defer src="script.js"></script>
 
+<style id="leadership-editorial-v4">
+/* LEADERSHIP / CHAPTERS OF IMPACT — EDITORIAL V4
+   Deliberately restrained. Large imagery, alternating proportions and
+   a drawn organic thread — no carousel, 3D boxes or scroll locking. */
+.leadership-editorial{--story-silk:#bea57d;--story-paper:#f1ece2;--story-quiet:#a5aebb;position:relative;overflow:hidden;padding:142px 0 128px!important;background:#090f18!important;isolation:isolate}
+.leadership-editorial:before{content:"";position:absolute;top:0;left:0;width:100%;height:950px;background:radial-gradient(ellipse 50% 50% at 52% 25%,rgba(38,54,75,.48),transparent 86%);pointer-events:none;z-index:0}
+.leadership-editorial:after{display:none!important}
+.story-atmosphere{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(216,184,129,.02),transparent 30%,transparent 70%,rgba(216,184,129,.02));opacity:.7}
+.leadership-editorial .story-intro{position:relative;z-index:3;padding-bottom:60px}
+.story-intro .section-kicker{font-size:10px;letter-spacing:.23em;margin:0 0 34px}
+.story-intro-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(250px,.7fr);align-items:end;gap:50px}
+.story-eyebrow{font-size:9px;font-weight:600;letter-spacing:.18em;color:#7b899b;margin-bottom:15px}
+.story-intro h2{font-size:clamp(5rem,8vw,10.6rem);font-weight:480;letter-spacing:-.09em;line-height:.93;margin:0;color:var(--story-paper)}
+.story-intro h2 em{color:var(--gold);font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.066em}
+.story-intro-aside{justify-self:end;width:min(290px,100%);padding-bottom:10px}
+.story-intro-aside p{font-size:14px;line-height:1.9;color:#a9b3c2;margin:0 0 29px;max-width:290px}
+.story-intro-rule{display:block;width:100%;height:1px;background:linear-gradient(90deg,rgba(213,183,133,.5),rgba(213,183,133,.03))}
+.story-intro-note{display:flex;align-items:center;justify-content:space-between;font-size:9px;letter-spacing:.15em;color:var(--story-silk);margin-top:16px}
+.story-intro-note b{font-size:23px;line-height:1;font-weight:350}
+.story-journey{position:relative;isolation:isolate}
+.story-spine{position:absolute;top:0;bottom:0;left:50%;width:clamp(85px,10vw,142px);height:100%;overflow:visible;transform:translateX(-50%);z-index:0;pointer-events:none}
+.story-spine-halo{fill:none;stroke:rgba(201,172,129,.11);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.story-spine-draw{fill:none;stroke:rgba(217,188,143,.72);stroke-width:1.5;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.story-branch-hints path{fill:none;stroke:rgba(205,176,130,.24);stroke-width:1.1;vector-effect:non-scaling-stroke}
+.story-spine-nodes circle{fill:#d9bb8a;stroke:#101927;stroke-width:2;vector-effect:non-scaling-stroke}
+.story-pairs{list-style:none;padding:0;margin:0;position:relative;z-index:1;display:flex;flex-direction:column;gap:90px}
+.story-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(96px,11.5vw,170px);align-items:start;min-height:585px}
+.story-moment{position:relative;min-width:0;perspective:1600px;transform-style:preserve-3d}
+.story-moment--right{margin-top:160px}
+.story-pair--reverse .story-moment--left{margin-top:160px}
+.story-pair--reverse .story-moment--right{margin-top:0}
+.story-pair:nth-child(3) .story-moment--right{margin-top:175px}
+.story-moment figure{margin:0;position:relative;transform-style:preserve-3d}
+.story-photo{position:relative;overflow:hidden;isolation:isolate;background:#182434;box-shadow:0 30px 78px rgba(0,0,0,.25);border:1px solid rgba(234,210,167,.07)}
+.story-photo:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.10),transparent 33%,transparent 74%,rgba(0,0,0,.11));opacity:.5}
+.story-photo--wide{height:clamp(330px,34vw,495px);aspect-ratio:1.15}
+.story-photo--portrait{height:clamp(330px,33vw,475px);background:radial-gradient(ellipse at 54% 58%,#27334a,#141d2b 64%,#0c1420 100%)}
+.story-photo--warm{background:radial-gradient(ellipse at 50% 60%,#323044,#191d2a 64%,#10141f 100%)}
+.story-photo--executive{background:radial-gradient(ellipse at 50% 52%,#293746,#161e2a 64%,#0e1721 100%)}
+.story-photo img{width:100%;height:100%;display:block;object-fit:cover;transform:scale(1.025);transition:transform 900ms cubic-bezier(.16,1,.3,1),filter 900ms ease;filter:saturate(.83) contrast(1.035)}
+.story-photo--wide img{object-position:center}
+.story-photo--portrait img{position:relative;z-index:1;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 24px 28px rgba(1,5,12,.38));transform:scale(1.02);max-height:100%}
+.story-portrait-circle{position:absolute;left:15%;top:12%;height:70%;width:70%;border-radius:50%;border:1px solid rgba(221,187,133,.15);box-shadow:0 0 75px rgba(211,181,135,.055),inset 0 0 50px rgba(201,164,105,.04)}
+.story-photo--portrait:before{content:"PERSPECTIVE";position:absolute;top:38%;left:50%;transform:translateX(-50%);font-size:clamp(42px,6vw,95px);letter-spacing:-.07em;color:rgba(255,255,255,.033);font-weight:700;white-space:nowrap}
+.story-moment figcaption{padding:22px 2px 0;position:relative}
+.story-moment-meta{color:var(--story-silk);font-size:10px;letter-spacing:.17em;font-weight:600}
+.story-moment-meta i{font-style:normal;color:#e7d3b2;font-size:12px}
+.story-moment figcaption h3{font-size:clamp(1.85rem,2.5vw,3rem);font-weight:460;letter-spacing:-.06em;line-height:1.08;margin:12px 0 11px;color:#f0ede7}
+.story-moment figcaption p{font-size:13px;color:#9da8b8;line-height:1.85;margin:0;max-width:330px}
+.story-moment:hover .story-photo img{transform:scale(1.065);filter:saturate(1) contrast(1.04)}
+.story-moment--portrait:hover .story-photo img{transform:scale(1.045)}
+.story-outro{display:flex;align-items:center;justify-content:space-between;gap:34px;margin-top:65px;border-top:1px solid rgba(220,186,136,.18);padding-top:27px;position:relative;z-index:2}
+.story-outro-line{display:none}
+.story-outro>span{font-size:10px;letter-spacing:.16em;color:#a6b0bd}
+.story-outro>a{font-size:12px;white-space:nowrap;color:var(--gold);border-bottom:1px solid rgba(216,184,129,.35);padding-bottom:7px;transition:color .25s,border-color .25s}
+.story-outro>a span{margin-left:12px}
+.story-outro>a:hover{color:#f8dbad;border-color:#f8dbad}
+/* Progressive scroll reveal: visible even if JS is disabled. */
+.story-moment[data-story-moment]{opacity:1;transform:none}
+.leadership-editorial.story-motion-ready .story-moment[data-story-moment]{opacity:0;transform:perspective(1450px) translate3d(0,64px,-75px) rotateY(var(--story-entry-rot,0deg)) scale(.967);transition:transform 1.22s cubic-bezier(.16,1,.3,1),opacity 1.05s ease}
+.leadership-editorial.story-motion-ready .story-moment[data-story-moment].story-in-view{opacity:1;transform:perspective(1450px) translate3d(0,0,0) rotateY(0deg) scale(1)}
+.leadership-editorial.story-motion-ready .story-moment--left{--story-entry-rot:-7deg}
+.leadership-editorial.story-motion-ready .story-moment--right{--story-entry-rot:7deg}
+.story-moment:focus-within{opacity:1!important;transform:none!important}
+@media(max-width:1050px){
+ .leadership-editorial{padding:110px 0 105px!important}
+ .story-intro h2{font-size:clamp(4.2rem,8.5vw,7rem)}
+ .story-pair{gap:clamp(78px,10vw,115px);min-height:510px}
+ .story-moment--right,.story-pair--reverse .story-moment--left{margin-top:120px}
+ .story-photo--wide,.story-photo--portrait{height:clamp(280px,33vw,420px)}
+ .story-pairs{gap:80px}
+}
+@media(max-width:700px){
+ .leadership-editorial{padding:92px 0 90px!important}
+ .story-intro{padding-bottom:45px!important}
+ .story-intro-grid{display:block}
+ .story-intro h2{font-size:clamp(3.95rem,12vw,6.7rem)}
+ .story-intro-aside{max-width:340px;width:auto;margin-top:24px;justify-self:stretch}
+ .story-intro-aside p{font-size:12px;margin-bottom:16px;line-height:1.75}
+ .story-intro-rule{display:none}
+ .story-intro-note{justify-content:flex-start;gap:14px}
+ .story-journey{padding-left:45px}
+ .story-spine{left:12px;width:26px;transform:none;opacity:.7}
+ .story-branch-hints{display:none}
+ .story-pairs{gap:61px}
+ .story-pair{display:flex;flex-direction:column;gap:42px;min-height:0}
+ .story-moment{width:100%;max-width:550px}
+ .story-moment--right{margin-top:0;margin-left:0}
+ .story-pair--reverse .story-moment--left,.story-pair--reverse .story-moment--right,.story-pair:nth-child(3) .story-moment--right{margin-top:0}
+ .story-photo--wide{height:auto;aspect-ratio:1.18}
+ .story-photo--portrait{height:auto;aspect-ratio:1.1}
+ .story-moment figcaption{padding-top:17px}
+ .story-moment figcaption h3{font-size:clamp(1.7rem,7vw,2.65rem)}
+ .story-moment figcaption p{font-size:12px}
+ .story-outro{margin-top:65px;display:block;padding-top:23px}
+ .story-outro>span{display:block;font-size:9px;line-height:1.9}
+ .story-outro>a{display:inline-block;margin-top:20px}
+}
+@media(prefers-reduced-motion:reduce){
+ .leadership-editorial .story-moment[data-story-moment],.leadership-editorial.story-motion-ready .story-moment[data-story-moment]{opacity:1!important;transform:none!important;transition:none!important}
+ .leadership-editorial .story-photo img{transform:none!important;transition:none!important}
+}
+
+</style>
 </head>
 <body>
   <div class="studio-progress" id="studioProgress" aria-hidden="true"><span></span></div>
@@ -343,139 +447,85 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
         <div class="feature-photo"><img src="images/keynote-event.webp" width="1448" height="1086" alt="Business leadership presentation at a corporate event" loading="lazy" /><div class="feature-photo-overlay"></div><span class="feature-image-index">FEATURED PERSPECTIVE — 001</span></div>
         <div class="feature-copy container"><div class="feature-content" data-reveal><div class="section-kicker"><span>BEYOND THE ORDINARY</span><span class="kicker-line"></span></div><h2 id="visionTitle">The future<br/>belongs to those<br/><em>who build it.</em></h2><p>Good ideas open doors. The right direction creates momentum. Meaningful leadership connects both.</p><a class="text-link light-link" href="#leadership">See the vision in action <span>↗</span></a></div></div>
       </section>
-      <!-- LEADERSHIP / ORGANIC BRANCH STORY -->
-      <section class="leadership leadership-branch studio-section" data-studio="leadership" id="leadership" aria-labelledby="leadershipTitle">
-        <div class="branch-track" id="branchTrack">
-          <div class="branch-sticky">
-            <div class="branch-ambient" aria-hidden="true"></div>
-            <div class="branch-header container">
-              <div class="section-kicker"><span>03 / LEADERSHIP IN FOCUS</span><span class="kicker-line"></span></div>
-              <div class="branch-header-row">
-                <h2 id="leadershipTitle">A branch of <em>leadership.</em></h2>
-                <p>Scroll through a staggered 3D timeline where each branch reveals paired moments of leadership, trust, strategy and presence.</p>
-              </div>
+            <!-- LEADERSHIP / CHAPTERS OF IMPACT — EDITORIAL SCROLL STORY -->
+      <section class="leadership leadership-editorial studio-section" data-studio="leadership" id="leadership" aria-labelledby="leadershipTitle">
+        <div class="story-atmosphere" aria-hidden="true"></div>
+        <div class="container story-intro">
+          <div class="section-kicker"><span>03 / LEADERSHIP IN FOCUS</span><span class="kicker-line"></span></div>
+          <div class="story-intro-grid">
+            <div>
+              <div class="story-eyebrow">THE PEOPLE. THE MOMENTS. THE DIRECTION.</div>
+              <h2 id="leadershipTitle">Leadership,<br/><em>witnessed.</em></h2>
             </div>
-
-            <div class="branch-stage container" id="branchStage">
-              <div class="branch-world" id="branchWorld">
-                <div class="branch-world-glow" aria-hidden="true"></div>
-                <svg class="branch-spine-art" viewBox="0 0 220 1600" preserveAspectRatio="none" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="branchStroke" x1="0" x2="0" y1="0" y2="1">
-                      <stop offset="0%" stop-color="rgba(241,213,160,.10)" />
-                      <stop offset="35%" stop-color="rgba(241,213,160,.9)" />
-                      <stop offset="65%" stop-color="rgba(143,178,255,.68)" />
-                      <stop offset="100%" stop-color="rgba(241,213,160,.18)" />
-                    </linearGradient>
-                    <filter id="branchGlow" x="-40%" y="-10%" width="180%" height="120%">
-                      <feGaussianBlur stdDeviation="3.5" result="blur" />
-                      <feMerge>
-                        <feMergeNode in="blur" />
-                        <feMergeNode in="SourceGraphic" />
-                      </feMerge>
-                    </filter>
-                  </defs>
-                  <path class="branch-spine-shadow" d="M110 30 C102 150 118 250 110 370 C101 495 118 617 110 770 C100 930 120 1090 110 1255 C104 1375 114 1485 110 1570" />
-                  <path class="branch-spine-line" d="M110 30 C102 150 118 250 110 370 C101 495 118 617 110 770 C100 930 120 1090 110 1255 C104 1375 114 1485 110 1570" />
-                  <g class="branch-clusters" filter="url(#branchGlow)">
-                    <path class="branch-arm" d="M110 315 C88 290 62 258 26 226" />
-                    <path class="branch-arm" d="M110 315 C138 336 166 362 196 402" />
-                    <circle class="branch-node-dot" cx="110" cy="315" r="10" />
-                    <circle class="branch-node-ring" cx="110" cy="315" r="24" />
-
-                    <path class="branch-arm" d="M110 805 C83 837 53 870 20 915" />
-                    <path class="branch-arm" d="M110 805 C142 777 170 748 198 710" />
-                    <circle class="branch-node-dot" cx="110" cy="805" r="10" />
-                    <circle class="branch-node-ring" cx="110" cy="805" r="24" />
-
-                    <path class="branch-arm" d="M110 1290 C82 1264 58 1234 24 1200" />
-                    <path class="branch-arm" d="M110 1290 C140 1316 166 1344 194 1386" />
-                    <circle class="branch-node-dot" cx="110" cy="1290" r="10" />
-                    <circle class="branch-node-ring" cx="110" cy="1290" r="24" />
-                  </g>
-                </svg>
-
-                <ol class="branch-pairs" aria-label="Leadership timeline in paired moments">
-                  <li class="branch-pair pair-1" data-pair="0">
-                    <article class="branch-card branch-card-left">
-                      <figure class="branch-card-figure">
-                        <div class="branch-card-media"><img src="images/leadership-meeting.webp" alt="Business leadership strategy meeting" loading="lazy" decoding="async" /></div>
-                        <figcaption class="branch-card-copy">
-                          <span class="branch-card-index">01 / LEADERSHIP</span>
-                          <h3>Leading with purpose</h3>
-                          <p>Great direction starts with the people around the table.</p>
-                        </figcaption>
-                      </figure>
-                    </article>
-                    <article class="branch-card branch-card-right">
-                      <figure class="branch-card-figure">
-                        <div class="branch-card-media"><img src="images/client-conversation.webp" alt="Business conversation in a modern Riyadh office" loading="lazy" decoding="async" /></div>
-                        <figcaption class="branch-card-copy">
-                          <span class="branch-card-index">02 / RELATIONSHIPS</span>
-                          <h3>Trust in every conversation</h3>
-                          <p>Strong business relationships begin with clarity and respect.</p>
-                        </figcaption>
-                      </figure>
-                    </article>
-                  </li>
-
-                  <li class="branch-pair pair-2" data-pair="1">
-                    <article class="branch-card branch-card-left">
-                      <figure class="branch-card-figure">
-                        <div class="branch-card-media"><img src="images/growth-presentation.webp" alt="Business growth strategy presentation" loading="lazy" decoding="async" /></div>
-                        <figcaption class="branch-card-copy">
-                          <span class="branch-card-index">03 / STRATEGY</span>
-                          <h3>Planning the next move</h3>
-                          <p>Clear roadmaps turn ambition into focused action.</p>
-                        </figcaption>
-                      </figure>
-                    </article>
-                    <article class="branch-card branch-card-right">
-                      <figure class="branch-card-figure">
-                        <div class="branch-card-media"><img src="images/strategy-workshop.webp" alt="Business growth team workshop" loading="lazy" decoding="async" /></div>
-                        <figcaption class="branch-card-copy">
-                          <span class="branch-card-index">04 / COLLABORATION</span>
-                          <h3>Progress built together</h3>
-                          <p>Shared insight creates stronger, faster decisions.</p>
-                        </figcaption>
-                      </figure>
-                    </article>
-                  </li>
-
-                  <li class="branch-pair pair-3" data-pair="2">
-                    <article class="branch-card branch-card-left">
-                      <figure class="branch-card-figure">
-                        <div class="branch-card-media"><img src="images/keynote-event.webp" alt="Corporate business leadership speech" loading="lazy" decoding="async" /></div>
-                        <figcaption class="branch-card-copy">
-                          <span class="branch-card-index">05 / PERSPECTIVE</span>
-                          <h3>Sharing a wider vision</h3>
-                          <p>Leadership is the courage to communicate what comes next.</p>
-                        </figcaption>
-                      </figure>
-                    </article>
-                    <article class="branch-card branch-card-right">
-                      <figure class="branch-card-figure">
-                        <div class="branch-card-media"><img src="images/portrait-office.webp" alt="Kawser Hamid at an executive desk" loading="lazy" decoding="async" /></div>
-                        <figcaption class="branch-card-copy">
-                          <span class="branch-card-index">06 / PRESENCE</span>
-                          <h3>Confidence in execution</h3>
-                          <p>Calm presence helps turn ideas into decisive action.</p>
-                        </figcaption>
-                      </figure>
-                    </article>
-                  </li>
-                </ol>
-              </div>
-            </div>
-
-            <div class="branch-footer container" aria-hidden="true">
-              <span class="branch-hint">SCROLL THE BRANCH <span>↓</span></span>
-              <div class="branch-progress"><span id="branchProgress"></span></div>
-              <span class="branch-count" id="branchCount">01 <i>/ 03</i></span>
+            <div class="story-intro-aside">
+              <p>A closer look at the moments that shape trust, direction and lasting impact.</p>
+              <span class="story-intro-rule" aria-hidden="true"></span>
+              <span class="story-intro-note">SCROLL TO EXPLORE <b>↓</b></span>
             </div>
           </div>
         </div>
+        <div class="container story-journey" id="storyJourney">
+          <svg class="story-spine" viewBox="0 0 200 1600" preserveAspectRatio="none" aria-hidden="true">
+            <path class="story-spine-halo" d="M100 18 C107 153 83 250 99 415 S120 680 101 825 S82 1046 100 1230 S111 1460 100 1582" />
+            <path id="storySpineDraw" class="story-spine-draw" d="M100 18 C107 153 83 250 99 415 S120 680 101 825 S82 1046 100 1230 S111 1460 100 1582" />
+            <g class="story-branch-hints">
+              <path d="M99 245 C77 219 54 211 34 212" />
+              <path d="M100 245 C129 260 148 289 167 295" />
+              <path d="M100 790 C78 801 49 824 30 831" />
+              <path d="M100 790 C125 770 150 753 171 750" />
+              <path d="M100 1315 C74 1280 53 1271 32 1267" />
+              <path d="M100 1315 C127 1336 151 1350 173 1357" />
+            </g>
+            <g class="story-spine-nodes"><circle cx="99" cy="245" r="4"/><circle cx="100" cy="790" r="4"/><circle cx="100" cy="1315" r="4"/></g>
+          </svg>
+          <ol class="story-pairs" aria-label="Six selected moments of leadership">
+            <li class="story-pair" data-story-pair="1">
+              <article class="story-moment story-moment--left story-moment--feature" data-story-moment>
+                <figure>
+                  <div class="story-photo story-photo--wide"><img src="images/leadership-meeting.webp" alt="Leadership conversation around a strategy table" loading="lazy" decoding="async" /></div>
+                  <figcaption><span class="story-moment-meta"><i>01</i> / LEADERSHIP</span><h3>Leading with purpose.</h3><p>Direction begins with meaningful conversations.</p></figcaption>
+                </figure>
+              </article>
+              <article class="story-moment story-moment--right story-moment--portrait" data-story-moment>
+                <figure>
+                  <div class="story-photo story-photo--portrait"><span class="story-portrait-circle" aria-hidden="true"></span><img src="images/portrait-standing-blue-alt.webp" alt="Kawser Hamid in a navy suit" loading="lazy" decoding="async" /></div>
+                  <figcaption><span class="story-moment-meta"><i>02</i> / PRESENCE</span><h3>Character in every decision.</h3><p>Leadership starts with conviction and clarity.</p></figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="story-pair story-pair--reverse" data-story-pair="2">
+              <article class="story-moment story-moment--left story-moment--portrait" data-story-moment>
+                <figure>
+                  <div class="story-photo story-photo--portrait story-photo--warm"><span class="story-portrait-circle" aria-hidden="true"></span><img src="images/portrait-seated-forward.webp" alt="Kawser Hamid, seated in a business suit" loading="lazy" decoding="async" /></div>
+                  <figcaption><span class="story-moment-meta"><i>03</i> / PERSPECTIVE</span><h3>Think beyond today.</h3><p>A long view changes how we lead.</p></figcaption>
+                </figure>
+              </article>
+              <article class="story-moment story-moment--right story-moment--feature" data-story-moment>
+                <figure>
+                  <div class="story-photo story-photo--wide"><img src="images/client-conversation.webp" alt="Collaborative business conversation in Riyadh" loading="lazy" decoding="async" /></div>
+                  <figcaption><span class="story-moment-meta"><i>04</i> / RELATIONSHIPS</span><h3>Built on trust.</h3><p>Progress happens when people work together.</p></figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="story-pair" data-story-pair="3">
+              <article class="story-moment story-moment--left story-moment--feature" data-story-moment>
+                <figure>
+                  <div class="story-photo story-photo--wide"><img src="images/keynote-event.webp" alt="Business vision shared at an executive event" loading="lazy" decoding="async" /></div>
+                  <figcaption><span class="story-moment-meta"><i>05</i> / VISION</span><h3>Ideas worth sharing.</h3><p>Strong ideas become stronger when shared.</p></figcaption>
+                </figure>
+              </article>
+              <article class="story-moment story-moment--right story-moment--portrait" data-story-moment>
+                <figure>
+                  <div class="story-photo story-photo--portrait story-photo--executive"><span class="story-portrait-circle" aria-hidden="true"></span><img src="images/portrait-office.webp" alt="Kawser Hamid working at an executive desk" loading="lazy" decoding="async" /></div>
+                  <figcaption><span class="story-moment-meta"><i>06</i> / IMPACT</span><h3>From vision to action.</h3><p>Every next chapter begins with a decision.</p></figcaption>
+                </figure>
+              </article>
+            </li>
+          </ol>
+        </div>
+        <div class="container story-outro"><div class="story-outro-line" aria-hidden="true"></div><span>LEADERSHIP IS NOT A MOMENT. IT'S A CONTINUING JOURNEY.</span><a href="#perspective">The personal perspective <span aria-hidden="true">↗</span></a></div>
       </section>
+
 
       <!-- REFLECTION / PORTRAIT ROTATOR -->
       <section class="portrait-chapter section-space studio-section" data-studio="perspective" id="perspective" aria-labelledby="perspectiveTitle">
@@ -673,5 +723,61 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
 })();
 
   </script>
+<script id="leadership-editorial-v4-controller">
+(() => {
+  'use strict';
+  const section = document.querySelector('.leadership-editorial');
+  if (!section) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const photos = [...section.querySelectorAll('[data-story-moment]')];
+  const journey = document.getElementById('storyJourney');
+  const line = document.getElementById('storySpineDraw');
+  let pending = false;
+  let lineLength = 0;
+  if (line && typeof line.getTotalLength === 'function') {
+    lineLength = line.getTotalLength();
+    line.style.strokeDasharray = `${lineLength}`;
+    line.style.strokeDashoffset = reduceMotion ? '0' : `${lineLength}`;
+  }
+
+  const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
+  function updateTimeline() {
+    pending = false;
+    if (!journey || !lineLength || reduceMotion) return;
+    const bounds = journey.getBoundingClientRect();
+    const height = Math.max(1, bounds.height);
+    const progress = clamp((window.innerHeight * 0.7 - bounds.top) / (height + window.innerHeight * 0.1), 0, 1);
+    line.style.strokeDashoffset = `${(lineLength * (1 - progress)).toFixed(2)}`;
+  }
+  function schedule() {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(updateTimeline);
+  }
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    // Never hide content unless the observer is available.
+    photos.forEach(el => el.classList.remove('story-in-view'));
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('story-in-view');
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.1, rootMargin: '0px 0px -7% 0px' });
+    photos.forEach(el => observer.observe(el));
+    section.classList.add('story-motion-ready');
+    // Ensure already visible cards paint immediately after hydration.
+    for (const el of photos) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < innerHeight * .88 && rect.bottom > 0) el.classList.add('story-in-view');
+    }
+  }
+  window.addEventListener('scroll', schedule, { passive:true });
+  window.addEventListener('resize', schedule, { passive:true });
+  schedule();
+})();
+
+</script>
 </body>
 </html>

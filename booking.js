@@ -71,7 +71,12 @@
   });
 
   copyButton?.addEventListener('click', async () => {
-    if (!form.reportValidity()) return;
+    // Local copying does not share data with WhatsApp, so consent is not needed.
+    const consent = form.elements.namedItem('bookingConsent');
+    consent.required = false;
+    const valid = form.reportValidity();
+    consent.required = true;
+    if (!valid) return;
     const phone = get('customerPhone');
     if (!phoneValid(phone)) {
       const field = form.elements.namedItem('customerPhone');

@@ -96,8 +96,6 @@
     '09 / CONTACT': '০৯ / যোগাযোগ'
   });
   const switcher = document.getElementById('khLanguageSwitcher');
-  const enPart = switcher?.querySelector('.kh-lang-en');
-  const bnPart = switcher?.querySelector('.kh-lang-bn');
   const originals = new WeakMap();
   const attributes = new WeakMap();
   const translationAttributes = ['placeholder','aria-label','title','alt'];
@@ -147,12 +145,7 @@
     translateTree(document.body,language);
     const titleNode=document.querySelector('title');
     if (titleNode) translateTree(titleNode,language);
-    if (enPart && bnPart) {
-      enPart.classList.toggle('kh-lang-active', language==='en');
-      enPart.classList.toggle('kh-lang-inactive',language!=='en');
-      bnPart.classList.toggle('kh-lang-active', language==='bn');
-      bnPart.classList.toggle('kh-lang-inactive',language!=='bn');
-    }
+    if (switcher) switcher.dataset.language = language;
     if (switcher) {
       const label = language==='bn'?'Switch website language to English':'ওয়েবসাইট বাংলায় দেখুন';
       switcher.setAttribute('aria-label',label);

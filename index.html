@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <base href="/" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#090d14" />
   <meta name="description" content="Kawser Hamid — Founder & CEO of KH Dream Services Ltd. Business strategy, investor solutions and premium consultancy in Saudi Arabia." />
@@ -333,6 +334,7 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
 </style>
   <link rel="stylesheet" href="booking.css" />
   <script defer src="booking.js"></script>
+  <script defer src="booking-drawer.js"></script>
 </head>
 <body>
   <div class="studio-progress" id="studioProgress" aria-hidden="true"><span></span></div>
@@ -351,9 +353,9 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
           <a href="#expertise">Expertise</a>
           <a href="#leadership">Leadership</a>
           <a href="#approach">Approach</a>
-          <a href="#booking">Booking</a>
+          <a href="/booking">Booking</a>
         </nav>
-        <a class="header-contact" href="#booking">Book consultation <span aria-hidden="true">↗</span></a>
+        <a class="header-contact" href="/booking">Book consultation <span aria-hidden="true">↗</span></a>
         <button class="mobile-menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
       </div>
       <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation" inert>
@@ -361,7 +363,7 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
         <a href="#expertise">Expertise <span>02</span></a>
         <a href="#leadership">Leadership <span>03</span></a>
         <a href="#approach">Approach <span>04</span></a>
-        <a href="#booking">Book a consultation <span>05</span></a>
+        <a href="/booking">Book a consultation <span>05</span></a>
         <a href="#contact">Contact <span>06</span></a>
       </nav>
     </header>
@@ -382,7 +384,7 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
             <div class="hero-role"><span class="role-line"></span> Founder & CEO <span class="role-separator">/</span> KH Dream Services Ltd</div>
             <p class="hero-description">Creating opportunities, connecting ambitions, and building meaningful businesses in Saudi Arabia and beyond.</p>
             <div class="hero-actions">
-              <a class="btn btn-gold magnetic" href="#booking">Book a consultation <span aria-hidden="true">↗</span></a>
+              <a class="btn btn-gold magnetic" href="/booking">Book a consultation <span aria-hidden="true">↗</span></a>
               <a class="btn btn-outline" href="#about">Explore my story <span aria-hidden="true">↘</span></a>
             </div>
           </div>
@@ -472,7 +474,7 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
               <span class="card-corner" aria-hidden="true">↗</span>
             </article>
           </div>
-          <div class="expertise-footnote"><span>AN INTEGRATED PERSPECTIVE, NOT ONE-SIZE-FITS-ALL ADVICE.</span><a class="text-link" href="#booking">Discuss your goals <span>↗</span></a></div>
+          <div class="expertise-footnote"><span>AN INTEGRATED PERSPECTIVE, NOT ONE-SIZE-FITS-ALL ADVICE.</span><a class="text-link" href="/booking">Discuss your goals <span>↗</span></a></div>
         </div>
       </section>
 
@@ -590,16 +592,45 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
         </div>
       </section>
 
+      <!-- CONTACT -->
+      <section class="contact studio-section" data-studio="contact" id="contact" aria-labelledby="contactTitle">
+        <div class="studio-contact-portal" aria-hidden="true"><span class="studio-portal-ring"></span><span class="studio-portal-ring two"></span></div>
+        <div class="contact-glow" aria-hidden="true"></div>
+        <div class="container contact-inner">
+          <div class="contact-content" data-reveal>
+            <div class="section-kicker"><span>06 / LET'S CONNECT</span><span class="kicker-line"></span></div>
+            <p class="contact-overline">HAVE AN IDEA OR BUSINESS AMBITION?</p>
+            <h2 id="contactTitle">Let's create<br/><em>what's next.</em></h2>
+            <p>Whether you're exploring a business opportunity or planning the next stage of growth, let's start the conversation.</p>
+            <div class="contact-actions"><a class="btn btn-gold magnetic" href="/booking">Book a consultation <span>↗</span></a><a class="btn btn-outline" href="https://wa.me/966574047388?text=Hello%2C%20I%27d%20like%20to%20book%20a%20business%20consultation%20with%20Kawser%20Hamid." target="_blank" rel="noopener noreferrer">WhatsApp directly <span>↗</span></a><a class="btn btn-outline" href="https://khdreamservices.com" target="_blank" rel="noopener noreferrer">Visit company website <span>↗</span></a></div>
+            <div class="contact-small-note"><span class="availability-dot"></span> CONSULTANCY ENQUIRIES · RIYADH, SAUDI ARABIA</div>
+          </div>
+          <div class="contact-visual" aria-hidden="true"><div class="contact-visual-ring"></div><img src="images/portrait-seated-grey.webp" width="1086" height="1448" alt="" loading="lazy" /></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><div class="container"><div class="footer-main"><div><a class="footer-logo" href="#top">KH<span>.</span></a><p>Kawser Hamid<br/>Founder & CEO, KH Dream Services Ltd</p></div><div class="footer-nav"><a href="#about">About</a><a href="#expertise">Expertise</a><a href="#leadership">Leadership</a><a href="/booking">Booking</a><a href="#contact">Contact</a></div><a class="footer-back" href="#top" aria-label="Back to top">↑</a></div><div class="footer-bottom"><span>© <span id="copyrightYear">2026</span> KAWSER HAMID. ALL RIGHTS RESERVED.</span><span>VISION <b>✳</b> TRUST <b>✳</b> IMPACT</span><span>MADE WITH PURPOSE.</span></div></div></footer>
+  </div>
+
+  <!-- CONSULTATION BOOKING: accessible sliding dialog with /booking URL -->
+  <div class="booking-overlay" id="bookingOverlay" hidden>
+    <button class="booking-backdrop" id="bookingBackdrop" type="button" aria-label="Close booking form"></button>
+    <aside class="booking-drawer" id="bookingDrawer" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" tabindex="-1" inert>
+      <div class="booking-drawer-top">
+        <div class="booking-drawer-brand">KH · KAWSER HAMID<small>PRIVATE CONSULTATION</small></div>
+        <button class="booking-drawer-close" id="bookingDrawerClose" type="button" aria-label="Close booking form">CLOSE <span aria-hidden="true">×</span></button>
+      </div>
       <!-- CONSULTATION REQUEST / CUSTOMER BOOKING -->
-      <section class="booking-section studio-section" id="booking" data-studio="booking" aria-labelledby="bookingTitle">
+      <section class="booking-section" id="booking" aria-labelledby="bookingTitle">
         <div class="container booking-shell">
-          <div class="booking-intro" data-reveal>
+          <div class="booking-intro">
             <div class="section-kicker"><span>05 / PRIVATE CONSULTATION</span><span class="kicker-line"></span></div>
             <h2 id="bookingTitle">Build the next<br/><em>chapter.</em></h2>
             <p>Share a few details about yourself and what you'd like to discuss. Your request opens in WhatsApp, where our team can follow up to arrange a consultation.</p>
             <div class="booking-accent"><span aria-hidden="true">↗</span> PRIVATE · PERSONALISED · PURPOSEFUL</div>
           </div>
-          <div class="booking-card" data-reveal>
+          <div class="booking-card">
             <div class="booking-card-head">
               <div>
                 <span class="booking-card-eyebrow">REQUEST AN APPOINTMENT</span>
@@ -657,25 +688,8 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
         </div>
       </section>
 
-      <!-- CONTACT -->
-      <section class="contact studio-section" data-studio="contact" id="contact" aria-labelledby="contactTitle">
-        <div class="studio-contact-portal" aria-hidden="true"><span class="studio-portal-ring"></span><span class="studio-portal-ring two"></span></div>
-        <div class="contact-glow" aria-hidden="true"></div>
-        <div class="container contact-inner">
-          <div class="contact-content" data-reveal>
-            <div class="section-kicker"><span>06 / LET'S CONNECT</span><span class="kicker-line"></span></div>
-            <p class="contact-overline">HAVE AN IDEA OR BUSINESS AMBITION?</p>
-            <h2 id="contactTitle">Let's create<br/><em>what's next.</em></h2>
-            <p>Whether you're exploring a business opportunity or planning the next stage of growth, let's start the conversation.</p>
-            <div class="contact-actions"><a class="btn btn-gold magnetic" href="#booking">Book a consultation <span>↗</span></a><a class="btn btn-outline" href="https://wa.me/966574047388?text=Hello%2C%20I%27d%20like%20to%20book%20a%20business%20consultation%20with%20Kawser%20Hamid." target="_blank" rel="noopener noreferrer">WhatsApp directly <span>↗</span></a><a class="btn btn-outline" href="https://khdreamservices.com" target="_blank" rel="noopener noreferrer">Visit company website <span>↗</span></a></div>
-            <div class="contact-small-note"><span class="availability-dot"></span> CONSULTANCY ENQUIRIES · RIYADH, SAUDI ARABIA</div>
-          </div>
-          <div class="contact-visual" aria-hidden="true"><div class="contact-visual-ring"></div><img src="images/portrait-seated-grey.webp" width="1086" height="1448" alt="" loading="lazy" /></div>
-        </div>
-      </section>
-    </main>
 
-    <footer class="footer"><div class="container"><div class="footer-main"><div><a class="footer-logo" href="#top">KH<span>.</span></a><p>Kawser Hamid<br/>Founder & CEO, KH Dream Services Ltd</p></div><div class="footer-nav"><a href="#about">About</a><a href="#expertise">Expertise</a><a href="#leadership">Leadership</a><a href="#booking">Booking</a><a href="#contact">Contact</a></div><a class="footer-back" href="#top" aria-label="Back to top">↑</a></div><div class="footer-bottom"><span>© <span id="copyrightYear">2026</span> KAWSER HAMID. ALL RIGHTS RESERVED.</span><span>VISION <b>✳</b> TRUST <b>✳</b> IMPACT</span><span>MADE WITH PURPOSE.</span></div></div></footer>
+    </aside>
   </div>
   <script id="studio-motion-v3-script">
 (() => {

@@ -12,37 +12,194 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preload" href="images/portrait-standing-blue.webp" as="image" type="image/webp" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="entrance.css" />
-  <script>
-    (() => {
-      try {
-        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const deepLink = location.hash && !['#top', '#hero'].includes(location.hash);
-        const previouslySeen = sessionStorage.getItem('kh-intro-complete') === '1';
-        if (!reduced && !deepLink && !previouslySeen) document.documentElement.classList.add('motion-intro');
-      } catch (_) {}
-    })();
-  </script>
+  <style id="studio-motion-v3">
+/* EXECUTIVE DIMENSION / STUDIO MOTION SYSTEM V3
+   Non-blocking cinematic arrival + immersive scroll chapters.
+   Scroll movement uses transform/opacity only; retains native accessibility. */
+:root { --studio-ease:cubic-bezier(.16,1,.3,1); --studio-edge:rgba(238,203,142,.3); --studio-gold:#dfbd86; --studio-ink:#080d15 }
+html {scroll-behavior:smooth}
+body{background:#070c15}
+.site-shell{position:relative;isolation:isolate}
+/* Continuity between sections without noisy particles / gradients. */
+.studio-section{--chapter-progress:0; --chapter-shift:0px;--studio-in:0;position:relative;isolation:isolate}
+.studio-section:after{content:"";position:absolute;left:max(30px,calc((100vw - var(--container))/2));right:max(30px,calc((100vw - var(--container))/2));bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(215,187,141,.14),transparent);pointer-events:none;z-index:8}
+.studio-progress{position:fixed;z-index:1001;top:0;left:0;width:100%;height:2px;pointer-events:none;transform:translateZ(0)}
+.studio-progress span{display:block;width:100%;height:100%;background:linear-gradient(90deg,#8d6b49,#f7dda5,#f0c07f);transform:scaleX(0);transform-origin:left;box-shadow:0 0 19px rgba(219,179,110,.48);will-change:transform}
+.studio-chapter-rail{position:fixed;right:21px;top:50%;height:185px;width:20px;transform:translateY(-50%);z-index:90;pointer-events:none;opacity:.75;transition:opacity .5s}
+.studio-chapter-rail .rail-track{display:block;height:170px;width:1px;background:rgba(212,190,156,.28);margin:auto}
+.studio-chapter-rail .rail-thumb{position:absolute;top:0;left:50%;width:2px;height:39px;background:var(--studio-gold);transform:translateX(-50%) translateY(calc(var(--rail-progress,0) * 132px));box-shadow:0 0 12px rgba(223,189,134,.5)}
+.studio-chapter-rail .rail-label{position:absolute;top:186px;right:0;font-size:8px;letter-spacing:.17em;color:var(--gold);white-space:nowrap;writing-mode:vertical-rl}
+/* 01 / ARRIVAL. The website is immediately usable: no overlay/preloader. */
+.hero{isolation:isolate;background:radial-gradient(ellipse at 74% 61%,#1c293b 0%,#101a29 43%,#070c14 86%)!important;perspective:1400px;overflow:hidden}
+.studio-hero-depth{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.studio-horizon{position:absolute;width:120vw;height:120vw;max-height:1650px;max-width:1650px;left:28%;top:-43%;border-radius:50%;border:1px solid rgba(212,177,113,.14);transform:rotate(-31deg) rotateX(69deg);box-shadow:inset 0 0 100px rgba(178,143,90,.06),0 0 95px rgba(214,172,95,.035)}
+.studio-horizon-secondary{width:92vw;height:92vw;max-width:1250px;max-height:1250px;left:37%;top:-26%;border-color:rgba(215,191,146,.08);transform:rotate(18deg) rotateX(68deg)}
+.studio-hero-aura{position:absolute;width:66vw;height:65vw;top:-8%;right:-8%;background:radial-gradient(circle,rgba(221,182,126,.19),rgba(74,113,167,.065) 37%,transparent 66%);filter:blur(18px);transform:translate3d(calc(var(--pointer-x,0) * -18px),calc(var(--pointer-y,0) * -18px),0);transition:transform .18s linear}
+.studio-hero-sideword{position:absolute;top:47%;left:2.3%;z-index:3;font-size:9px;letter-spacing:.34em;writing-mode:vertical-rl;color:rgba(241,210,158,.46);pointer-events:none}
+.hero .hero-content{z-index:3;position:relative}
+.hero .hero-intro{transform-style:preserve-3d;position:relative}
+.hero .hero-pretitle{color:#d8d2c5}
+.hero h1{position:relative;text-shadow:0 20px 65px rgba(0,0,0,.19);transform-style:preserve-3d}
+.hero h1 span:first-child{display:inline-block}
+.hero .hero-description{font-size:clamp(13px,1.02vw,15px);letter-spacing:.005em}
+.hero .hero-visual{transform-style:preserve-3d;isolation:isolate}
+.studio-portrait-chassis{position:absolute;z-index:0;inset:10% -4% 0 3%;pointer-events:none;transform-style:preserve-3d}
+.studio-chassis-core{position:absolute;inset:15% 2% 0 2%;border-radius:50% 50% 0 0;background:radial-gradient(ellipse at 55% 50%,rgba(198,165,119,.20) 0%,rgba(132,160,195,.08) 35%,transparent 70%);filter:blur(16px)}
+.studio-chassis-floor{position:absolute;width:73%;height:14%;bottom:1%;left:13%;border:1px solid rgba(227,192,135,.24);border-radius:50%;background:radial-gradient(ellipse,rgba(219,189,135,.16),transparent 65%);transform:rotateX(70deg);box-shadow:0 0 95px rgba(210,175,114,.13)}
+.studio-chassis-ring{position:absolute;width:89%;aspect-ratio:1;left:6%;top:6%;border:1px solid rgba(235,199,140,.17);border-radius:50%;transform:rotateY(47deg) rotateX(18deg);box-shadow:inset 0 0 42px rgba(219,177,118,.04)}
+.hero-person{filter:drop-shadow(18px 34px 40px rgba(0,0,0,.41))}
+.hero .hero-orbit{border-color:rgba(221,181,116,.32);opacity:.8}
+.hero .hero-footer{z-index:6}
+/* Non-obstructive on-load camera/typography performance; shortened on mobile. */
+@keyframes studio-enter-scene{from{opacity:.45;transform:perspective(1500px) translate3d(0,27px,-90px) scale(1.05)}to{opacity:1;transform:perspective(1500px) translate3d(0,0,0) scale(1)}}
+@keyframes studio-title-in{from{opacity:0;transform:translate3d(0,58px,-80px) rotateX(14deg);filter:blur(8px)}to{opacity:1;transform:translate3d(0,0,0) rotateX(0);filter:blur(0)}}
+@keyframes studio-portrait-in{from{opacity:0;transform:translate3d(76px,43px,-200px) rotateY(-16deg) scale(.91);filter:blur(4px)}to{opacity:1;transform:translate3d(0,0,0) rotateY(0) scale(1);filter:blur(0)}}
+@keyframes studio-gold-stroke{from{opacity:0;transform:rotateY(65deg) scale(.64)}to{opacity:1;transform:rotateY(0) scale(1)}}
+@keyframes studio-quiet-in{from{opacity:0;transform:translate3d(0,25px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+body.studio-arriving .hero .hero-intro[data-reveal]{opacity:1!important;transform:none!important}
+body.studio-arriving .hero .hero-mesh,body.studio-arriving .hero .hero-grid{animation:studio-enter-scene 1.25s var(--studio-ease) both}
+body.studio-arriving .hero h1{animation:studio-title-in 1.15s var(--studio-ease) .24s both}
+body.studio-arriving .hero .hero-person{animation:studio-portrait-in 1.45s var(--studio-ease) .22s both}
+body.studio-arriving .hero .hero-orbit,body.studio-arriving .studio-chassis-ring{animation:studio-gold-stroke 1.65s var(--studio-ease) .4s both}
+body.studio-arriving .hero .hero-pretitle,body.studio-arriving .hero .eyebrow{animation:studio-quiet-in .95s var(--studio-ease) .11s both}
+body.studio-arriving .hero .hero-role{animation:studio-quiet-in .85s var(--studio-ease) .7s both}
+body.studio-arriving .hero .hero-description{animation:studio-quiet-in .85s var(--studio-ease) .85s both}
+body.studio-arriving .hero .hero-actions{animation:studio-quiet-in .9s var(--studio-ease) 1s both}
+body.studio-arriving .hero .hero-footer{animation:studio-quiet-in .9s var(--studio-ease) 1.1s both}
+body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-ease) .3s both}
+/* Editorial section content comes in from space, not a flat fade. */
+.studio-section [data-reveal]{transition:opacity 1s var(--studio-ease),transform 1.2s var(--studio-ease);will-change:auto}
+.studio-section [data-reveal]:not(.is-visible){opacity:0;transform:perspective(1100px) translate3d(0,64px,-100px) rotateX(5deg)}
+.studio-section [data-reveal="left"]:not(.is-visible){transform:perspective(1100px) translate3d(-73px,39px,-105px) rotateY(7deg)}
+.studio-section [data-reveal="right"]:not(.is-visible){transform:perspective(1100px) translate3d(73px,39px,-105px) rotateY(-7deg)}
+.studio-section [data-reveal].is-visible{opacity:1;transform:translate3d(0,0,0) rotateY(0) rotateX(0)}
+/* 02 / STORY — layered editorial sculpture and parallax. */
+.about{background:radial-gradient(ellipse at 28% 40%,rgba(38,58,85,.24),transparent 52%),#090e17;overflow:hidden}
+.about:before{content:"01";font-family:var(--serif);font-size:clamp(190px,35vw,570px);line-height:1;position:absolute;top:-7%;right:-4%;color:rgba(215,182,130,.025);pointer-events:none;z-index:0}
+.about-layout{perspective:1400px}
+.image-architecture{transform-style:preserve-3d;box-shadow:0 40px 95px rgba(0,0,0,.23),0 0 0 1px rgba(232,206,164,.035);border:1px solid rgba(226,198,151,.14)}
+.image-architecture:after{content:"";position:absolute;inset:0;border:1px solid rgba(212,186,140,.17);pointer-events:none;z-index:5;background:linear-gradient(137deg,rgba(255,235,195,.11),transparent 28%,transparent 68%,rgba(247,217,166,.065))}
+.image-architecture-ring{filter:drop-shadow(0 0 25px rgba(223,184,114,.1));transform:translate3d(0,var(--about-ring-y,0px),0) rotate(calc(var(--chapter-progress,0) * 8deg));transition:transform .12s linear}
+.about-portrait{transform:translate3d(0,var(--about-portrait-y,0px),0) scale(1.04);transform-origin:center bottom;transition:transform .14s linear}
+.studio-edge-index{position:absolute;right:17px;top:15px;font-size:8px;letter-spacing:.22em;z-index:6;color:rgba(244,219,174,.7)}
+.about-copy .section-title{background:linear-gradient(130deg,#fff 25%,#cdd5e1 63%,#fff 90%);background-clip:text;-webkit-background-clip:text}
+.about-copy .section-title em{color:var(--gold);-webkit-text-fill-color:var(--gold)}
+/* Interlude: seamless connective typography instead of a noisy marquee. */
+.studio-statement{position:relative;overflow:hidden;perspective:900px;box-shadow:inset 0 15px 35px rgba(0,0,0,.17),inset 0 -15px 35px rgba(0,0,0,.15)}
+.studio-statement .statement-track{transform:translate3d(calc(var(--statement-x,0px)),0,0) rotateY(-2deg);will-change:transform}
+/* 03 / EXPERTISE — sophisticated 3D panels, flowing trim light. */
+.expertise{background:radial-gradient(ellipse at 68% 20%,rgba(52,67,92,.18),transparent 45%),#0d141e}
+.expertise-grid{perspective:1500px}
+.service-card{position:relative;isolation:isolate;transform-style:preserve-3d;overflow:hidden;backface-visibility:hidden;border:1px solid rgba(227,199,152,.13);background:linear-gradient(152deg,rgba(33,41,53,.96),rgba(15,22,31,.95) 80%);box-shadow:0 19px 40px rgba(0,0,0,.15);transition:border-color .45s ease,background .4s ease,box-shadow .45s ease}
+.service-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--light-x,55%) var(--light-y,25%),rgba(246,220,167,.15),transparent 40%);opacity:0;transition:opacity .5s ease;pointer-events:none}
+.service-card:after{content:"";position:absolute;inset:-2px;background:linear-gradient(135deg,rgba(248,219,157,.19),transparent 21%,transparent 80%,rgba(232,194,135,.1));pointer-events:none}
+.service-card:hover{border-color:rgba(237,205,146,.51);box-shadow:0 38px 60px rgba(0,0,0,.29),0 0 42px rgba(217,174,106,.06)}
+.service-card:hover:before{opacity:1}
+.service-card .service-icon,.service-card .service-top,.service-card h3,.service-card p{transform:translateZ(22px)}
+.service-card .service-icon{filter:drop-shadow(0 6px 15px rgba(224,190,129,.12))}
+/* 04 / VISION — immersive lens; photo scrolls on independent plane. */
+.vision-feature{overflow:hidden;min-height:670px;perspective:1400px}
+.studio-feature-horizon{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 75% 50%,rgba(234,200,133,.11),transparent 49%)}
+.vision-feature .feature-photo img{transform:scale(1.11) translateY(var(--vision-pan,0px));will-change:transform;filter:grayscale(.22) brightness(.76)}
+.vision-feature .feature-photo-overlay{background:linear-gradient(90deg,rgba(6,11,18,.97),rgba(6,11,18,.83) 36%,rgba(6,11,18,.23) 100%),linear-gradient(0deg,rgba(5,10,16,.34),transparent 44%)}
+.vision-feature .feature-content h2{text-shadow:0 17px 42px rgba(0,0,0,.36)}
+.vision-feature .feature-photo:after{content:"";inset:0;position:absolute;border:1px solid rgba(216,175,107,.07);pointer-events:none}
+/* 05 / LEADERSHIP — branch gets 3D sculptural lighting + curved organic pulse. */
+.leadership-branch .branch-sticky{background:radial-gradient(ellipse at 50% 45%,rgba(30,48,76,.85) 0,transparent 42%),linear-gradient(#080e19,#0b1521 50%,#070e18)}
+.leadership-branch .branch-spine-line{filter:drop-shadow(0 0 11px rgba(227,194,129,.3))}
+.leadership-branch .branch-node-ring{transform-box:fill-box;transform-origin:center;animation:studio-node-breathe 4s ease-in-out infinite}
+.leadership-branch .branch-pair:nth-child(2) .branch-node-ring{animation-delay:.5s}
+@keyframes studio-node-breathe{0%,100%{opacity:.25;transform:scale(.85)}50%{opacity:.7;transform:scale(1.18)}}
+.leadership-branch .branch-card-figure{background:linear-gradient(155deg,#273549,#0d141f 77%);border-color:rgba(226,195,145,.32);box-shadow:0 30px 70px rgba(0,0,0,.48),inset 0 0 24px rgba(212,177,126,.025)}
+.leadership-branch .branch-card-figure:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border:1px solid rgba(255,235,187,.14);box-shadow:inset 0 0 27px rgba(255,225,172,.04)}
+.leadership-branch .branch-card-media img{filter:saturate(.9) contrast(1.04);transition:filter .5s ease,transform .5s}
+.leadership-branch .branch-card:hover img{filter:saturate(1.05) contrast(1.05)}
+/* 06 / PERSONAL — physical portrait frame with offset orbital lens. */
+.portrait-chapter{background:radial-gradient(ellipse at 74% 43%,rgba(48,64,91,.67),transparent 42%),linear-gradient(105deg,#0c121c,#131d29 65%,#090e17);overflow:hidden}
+.perspective-image-frame{transform-style:preserve-3d;perspective:1000px}
+.perspective-halo{transform:translate3d(0,calc(var(--portrait-ambient,0px)),0) rotate(9deg);border-color:rgba(233,198,136,.3);box-shadow:0 0 55px rgba(205,164,100,.05)}
+.studio-perspective-visual:before{content:"";position:absolute;left:8%;right:7%;top:12%;height:70%;z-index:0;border-radius:50%;border:1px solid rgba(207,171,116,.15);transform:rotateX(65deg) rotateZ(29deg);pointer-events:none}
+.perspective-img-wrap img{filter:drop-shadow(22px 27px 30px rgba(0,0,0,.35));transform:translate3d(0,var(--portrait-travel,0px),0);transition:transform .15s linear}
+.perspective-switcher .perspective-dot{width:13px;height:13px;transition:transform .4s var(--studio-ease),background .3s,box-shadow .3s}
+.perspective-switcher .perspective-dot:hover,.perspective-switcher .perspective-dot.active{transform:scale(1.22)}
+/* 07 / APPROACH — three stages connected through scroll energy. */
+.approach{isolation:isolate;background:radial-gradient(ellipse at 50% 70%,rgba(61,82,106,.12),transparent 50%),#090e16}
+.approach-stages{position:relative;perspective:1000px}
+.approach-stage{transition:transform .75s var(--studio-ease),opacity .65s ease;transform-style:preserve-3d}
+.approach-stage.is-motion-current{transform:perspective(1000px) translateZ(17px) translateY(-9px)}
+.approach-stage.is-motion-current .stage-symbol{filter:drop-shadow(0 0 17px rgba(218,179,115,.3))}
+.approach-stage .stage-rule{transform:scaleX(.25);transform-origin:left;transition:transform 1s var(--studio-ease)}
+.approach-stage.is-visible .stage-rule{transform:scaleX(1)}
+.studio-path-track{position:absolute;left:50px;right:50px;top:55%;height:1px;z-index:0;background:rgba(211,184,139,.10);display:none}
+.studio-path-fill{display:block;height:100%;width:100%;transform:scaleX(var(--approach-progress,0));transform-origin:left;background:linear-gradient(90deg,#8e6b45,#dfbd86);transition:transform .2s linear}
+.approach-note{transform-style:preserve-3d;box-shadow:0 30px 66px rgba(0,0,0,.16);border-color:rgba(223,186,124,.38)}
+.approach-note img{transform:scale(1.08);transition:transform 1s var(--studio-ease)}
+.approach-note.is-visible img{transform:scale(1.01)}
+/* 08 / FINAL FRAME — contact opens into immersive architectural portal. */
+.contact{overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 73% 54%,#263348 0%,#151e2e 38%,#0b111d 80%)}
+.studio-contact-portal{position:absolute;right:-6%;top:-22%;width:min(78vw,1120px);aspect-ratio:1;pointer-events:none;opacity:.6;transform:translateY(var(--contact-portal-y,0px));transition:transform .16s linear}
+.studio-portal-ring{position:absolute;inset:9%;border-radius:50%;border:1px solid rgba(230,192,125,.25);transform:rotateX(63deg) rotateZ(28deg);box-shadow:inset 0 0 70px rgba(210,174,114,.07)}
+.studio-portal-ring.two{inset:22%;transform:rotateX(70deg) rotateZ(-38deg);border-color:rgba(224,190,143,.21)}
+.contact-visual img{filter:drop-shadow(21px 24px 28px rgba(0,0,0,.24));transform:translateY(var(--contact-photo-y,0px));transition:transform .16s linear}
+.contact h2{letter-spacing:-.084em;text-shadow:0 25px 72px rgba(0,0,0,.24)}
+.contact .btn-gold{box-shadow:0 16px 48px rgba(220,171,99,.15)}
+.footer{background:#080d14;border-top:1px solid rgba(237,209,154,.15)}
+/* Large format: beautiful, uncluttered visual vocabulary. */
+@media(min-width:1650px){.studio-chapter-rail{right:33px}.hero .hero-visual{right:0}}
+@media(max-width:1100px){.studio-hero-sideword{display:none}.studio-chapter-rail{right:9px;opacity:.45}}
+@media(max-width:960px){
+  .studio-chapter-rail{display:none}
+  .studio-horizon{width:145vw;height:145vw;top:-20%;left:28%}
+  .studio-horizon-secondary{top:8%;left:36%}
+  .studio-portrait-chassis{inset:4% -1% -5% 1%}
+  .service-card{transform:none!important}
+  .service-card .service-icon,.service-card .service-top,.service-card h3,.service-card p{transform:none}
+  .studio-section [data-reveal]:not(.is-visible){transform:translateY(24px)}
+  .studio-section [data-reveal="left"]:not(.is-visible),.studio-section [data-reveal="right"]:not(.is-visible){transform:translateY(24px)}
+}
+@media(max-width:640px){
+  .studio-hero-sideword,.studio-chapter-rail{display:none}
+  .studio-horizon{width:620px;height:620px;left:10%;top:19%}
+  .studio-horizon-secondary{width:480px;height:480px;left:20%;top:31%}
+  .studio-hero-aura{width:100vw;height:110vw;top:45%;right:-8%;filter:blur(13px)}
+  .studio-portrait-chassis{inset:18% 0 1% 1%}
+  .hero .hero-pretitle{color:#d8d2c5}
+  .studio-edge-index{font-size:7px}
+  .studio-contact-portal{width:120vw;right:-27%;top:28%;opacity:.36}
+  .studio-section:after{left:20px;right:20px}
+  .vision-feature .feature-photo img{transform:scale(1.07) translateY(var(--vision-pan,0px))}
+  .branch-card-figure{transform:none}
+  body.studio-arriving .hero h1{animation-duration:1s}
+  body.studio-arriving .hero .hero-person{animation-duration:1.1s}
+  body.studio-arriving .hero .hero-actions{animation-delay:.65s}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .studio-section [data-reveal],.studio-section [data-reveal]:not(.is-visible),.studio-section [data-reveal].is-visible{opacity:1!important;transform:none!important;transition:none!important}
+  body.studio-arriving .hero *,body.studio-arriving .site-header{animation:none!important}
+  .studio-progress span,.studio-statement .statement-track,.image-architecture-ring,.about-portrait,.perspective-img-wrap img,.contact-visual img,.studio-contact-portal,.vision-feature .feature-photo img{transition:none!important;transform:none!important}
+  .service-card,.approach-stage{transform:none!important;transition:none!important}
+  .branch-node-ring{animation:none!important}
+}
+/* Mobile composition: action buttons remain unobstructed above the portrait. */
+@media(max-width:640px){
+  .hero{height:auto!important;min-height:940px!important}
+  .hero .hero-content{min-height:940px!important}
+  .hero .hero-intro{z-index:8}
+  .hero .hero-visual{top:504px!important;bottom:66px!important;left:0;right:0;z-index:2}
+  .hero .hero-person{max-height:100%;max-width:100%;height:100%;right:5%;object-fit:contain;object-position:right bottom}
+  .hero .hero-footer{bottom:20px;z-index:10}
+  .hero .hero-actions{position:relative;z-index:10}
+  .studio-portrait-chassis{inset:0% -1% 0 0}
+}
+
+  </style>
   <script defer src="script.js"></script>
-  <script defer src="entrance.js"></script>
+
 </head>
 <body>
-  <div class="entry-portal" id="entryPortal" role="region" aria-label="Kawser Hamid cinematic website introduction">
-    <div class="entry-grid" aria-hidden="true"></div>
-    <div class="entry-halo" aria-hidden="true"></div>
-    <div class="entry-center" aria-hidden="true">
-      <div class="entry-orbit entry-orbit-a"></div>
-      <div class="entry-orbit entry-orbit-b"></div>
-      <div class="entry-orbit entry-orbit-c"></div>
-      <div class="entry-core">
-        <div class="entry-mark">KH<span>.</span></div>
-        <div class="entry-line"></div>
-        <div class="entry-caption">KAWSER HAMID</div>
-      </div>
-    </div>
-    <div class="entry-bottom" aria-hidden="true">VISION &nbsp; • &nbsp; LEADERSHIP &nbsp; • &nbsp; IMPACT</div>
-    <button type="button" class="entry-skip" id="entrySkip">Skip intro ↗</button>
-  </div>
+  <div class="studio-progress" id="studioProgress" aria-hidden="true"><span></span></div>
+  <div class="studio-chapter-rail" id="studioChapterRail" aria-hidden="true"><span class="rail-track"></span><span class="rail-thumb"></span><span class="rail-label">01 / ARRIVAL</span></div>
   <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
   <div class="site-shell" id="top">
     <header class="site-header" id="siteHeader">
@@ -72,7 +229,9 @@
 
     <main>
       <!-- CINEMATIC HERO -->
-      <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <section class="hero studio-section" data-studio="arrival" id="hero" aria-labelledby="heroTitle">
+        <div class="studio-hero-depth" aria-hidden="true"><span class="studio-horizon"></span><span class="studio-horizon studio-horizon-secondary"></span><span class="studio-hero-aura"></span></div>
+        <span class="studio-hero-sideword" aria-hidden="true">THE EXECUTIVE DIMENSION</span>
         <div class="hero-mesh" aria-hidden="true"></div>
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-ghost-text" aria-hidden="true">VISIONARY</div>
@@ -89,6 +248,7 @@
             </div>
           </div>
           <div class="hero-visual" id="heroVisual" aria-label="Portrait of Kawser Hamid">
+            <div class="studio-portrait-chassis" aria-hidden="true"><span class="studio-chassis-core"></span><span class="studio-chassis-floor"></span><span class="studio-chassis-ring"></span></div>
             <div class="hero-orbit orbit-outer" data-depth="0.16"></div>
             <div class="hero-orbit orbit-inner" data-depth="0.10"></div>
             <div class="hero-spotlight" data-depth="0.04"></div>
@@ -109,10 +269,11 @@
       </section>
 
       <!-- ABOUT -->
-      <section class="about section-space" id="about" aria-labelledby="aboutTitle">
+      <section class="about section-space studio-section" data-studio="story" id="about" aria-labelledby="aboutTitle">
         <div class="container about-layout">
           <div class="about-image-column" data-reveal="left">
-            <div class="image-architecture">
+            <div class="image-architecture studio-tilt-surface">
+              <span class="studio-edge-index">001 — THE PERSON</span>
               <span class="arch-top-label">A PERSONAL PERSPECTIVE / 001</span>
               <div class="image-architecture-ring"></div>
               <img src="images/portrait-seated-blue.webp" class="about-portrait" width="1086" height="1448" alt="Kawser Hamid seated in a navy suit" loading="lazy" />
@@ -133,16 +294,16 @@
       </section>
 
       <!-- TYPE MOMENT -->
-      <div class="statement-band" aria-label="Guiding values"><div class="statement-track" aria-hidden="true"><span>VISION <b>✳</b> TRUST <b>✳</b> IMPACT <b>✳</b> VISION <b>✳</b> TRUST <b>✳</b> IMPACT <b>✳</b></span><span>VISION <b>✳</b> TRUST <b>✳</b> IMPACT <b>✳</b> VISION <b>✳</b> TRUST <b>✳</b> IMPACT <b>✳</b></span></div></div>
+      <div class="statement-band studio-statement" aria-label="Guiding values"><div class="statement-track" aria-hidden="true"><span>VISION <b>✳</b> TRUST <b>✳</b> IMPACT <b>✳</b> VISION <b>✳</b> TRUST <b>✳</b> IMPACT <b>✳</b></span><span>VISION <b>✳</b> TRUST <b>✳</b> IMPACT <b>✳</b> VISION <b>✳</b> TRUST <b>✳</b> IMPACT <b>✳</b></span></div></div>
 
       <!-- EXPERTISE -->
-      <section class="expertise section-space" id="expertise" aria-labelledby="expertiseTitle">
+      <section class="expertise section-space studio-section" data-studio="expertise" id="expertise" aria-labelledby="expertiseTitle">
         <div class="container">
           <div class="section-header" data-reveal>
             <div><div class="section-kicker"><span>02 / AREAS OF EXPERTISE</span><span class="kicker-line"></span></div><h2 class="section-title" id="expertiseTitle">What I bring<br/><em>to the table.</em></h2></div>
             <p>Integrated business thinking, from market entry to sustainable growth. A focused approach to the decisions that matter.</p>
           </div>
-          <div class="expertise-grid">
+          <div class="expertise-grid studio-services">
             <article class="service-card tilt-card" data-reveal>
               <div class="service-top"><span class="service-number">01 / 04</span><span class="service-symbol">↗</span></div>
               <div class="service-icon"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M11 52V26L31.5 12 53 26v26H11Z"/><path d="M24 52V36h16v16M11 26h42M32 12v-6"/></svg></div>
@@ -177,114 +338,147 @@
       </section>
 
       <!-- EDITORIAL FEATURE -->
-      <section class="vision-feature" aria-labelledby="visionTitle">
+      <section class="vision-feature studio-section" data-studio="vision" aria-labelledby="visionTitle">
+        <div class="studio-feature-horizon" aria-hidden="true"></div>
         <div class="feature-photo"><img src="images/keynote-event.webp" width="1448" height="1086" alt="Business leadership presentation at a corporate event" loading="lazy" /><div class="feature-photo-overlay"></div><span class="feature-image-index">FEATURED PERSPECTIVE — 001</span></div>
         <div class="feature-copy container"><div class="feature-content" data-reveal><div class="section-kicker"><span>BEYOND THE ORDINARY</span><span class="kicker-line"></span></div><h2 id="visionTitle">The future<br/>belongs to those<br/><em>who build it.</em></h2><p>Good ideas open doors. The right direction creates momentum. Meaningful leadership connects both.</p><a class="text-link light-link" href="#leadership">See the vision in action <span>↗</span></a></div></div>
       </section>
-      <!-- LEADERSHIP / ORGANIC STAGGERED BRANCH STORY -->
-<section class="leadership leadership-branch" id="leadership" aria-labelledby="leadershipTitle">
-  <div class="branch-track" id="branchTrack">
-    <div class="branch-sticky">
-      <div class="branch-ambient" aria-hidden="true"></div>
-      <div class="branch-header container">
-        <div class="section-kicker"><span>03 / LEADERSHIP IN FOCUS</span><span class="kicker-line"></span></div>
-        <div class="branch-header-row">
-          <h2 id="leadershipTitle">A branch of <em>leadership.</em></h2>
-          <p>Every meaningful milestone begins with vision, trust and the people who bring it to life.</p>
-        </div>
-      </div>
-      <div class="branch-stage container" id="branchStage">
-        <div class="branch-world" id="branchWorld">
-          <div class="branch-world-glow" aria-hidden="true"></div>
-          <svg class="branch-spine-art" viewBox="0 0 220 1600" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="leadershipBranchMetal" x1="0" y1="0" x2=".3" y2="1">
-                <stop offset="0%" stop-color="#786044"/><stop offset="42%" stop-color="#e9cca0"/>
-                <stop offset="65%" stop-color="#8d9eb8"/><stop offset="100%" stop-color="#96754d"/>
-              </linearGradient>
-              <filter id="leadershipBranchGlow" x="-50%" y="-10%" width="200%" height="120%">
-                <feGaussianBlur stdDeviation="2" result="glow"/>
-                <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-            <path class="branch-spine-shadow" d="M110 20 C100 151 121 255 110 368 S121 608 110 775 S122 1056 111 1252 S118 1450 108 1580"/>
-            <path class="branch-spine-line" d="M110 20 C100 151 121 255 110 368 S121 608 110 775 S122 1056 111 1252 S118 1450 108 1580"/>
-            <g filter="url(#leadershipBranchGlow)">
-              <path class="branch-arm" d="M110 300 C81 277 58 255 23 228"/>
-              <path class="branch-arm" d="M110 300 C143 328 173 354 196 391"/>
-              <path class="branch-arm" d="M110 792 C83 817 56 853 22 884"/>
-              <path class="branch-arm" d="M110 792 C140 761 168 733 196 702"/>
-              <path class="branch-arm" d="M110 1273 C82 1242 52 1212 22 1182"/>
-              <path class="branch-arm" d="M110 1273 C142 1307 164 1333 195 1364"/>
-              <circle class="branch-node-dot" cx="110" cy="300" r="8"/>
-              <circle class="branch-node-dot" cx="110" cy="792" r="8"/>
-              <circle class="branch-node-dot" cx="110" cy="1273" r="8"/>
-            </g>
-          </svg>
-          <ol class="branch-pairs" aria-label="Leadership stories on alternating branches">
-            <li class="branch-pair branch-pair-1" data-pair="0">
-              <article class="branch-card branch-card-left">
-  <figure class="branch-card-figure">
-    <div class="branch-card-media"><img src="images/leadership-meeting.webp" alt="Business leadership strategy meeting" loading="lazy" decoding="async" /></div>
-    <figcaption class="branch-card-copy"><span class="branch-card-index">01 / LEADERSHIP</span>
-      <h3>Leading with purpose</h3><p>Great direction starts with the people around the table.</p></figcaption>
-  </figure>
-</article>
-              <article class="branch-card branch-card-right">
-  <figure class="branch-card-figure">
-    <div class="branch-card-media"><img src="images/client-conversation.webp" alt="Business conversation in a modern Riyadh office" loading="lazy" decoding="async" /></div>
-    <figcaption class="branch-card-copy"><span class="branch-card-index">02 / RELATIONSHIPS</span>
-      <h3>Trust in every conversation</h3><p>Strong business relationships begin with clarity and respect.</p></figcaption>
-  </figure>
-</article>
-            </li>
-<li class="branch-pair branch-pair-2" data-pair="1">
-              <article class="branch-card branch-card-left">
-  <figure class="branch-card-figure">
-    <div class="branch-card-media"><img src="images/growth-presentation.webp" alt="Business growth strategy presentation" loading="lazy" decoding="async" /></div>
-    <figcaption class="branch-card-copy"><span class="branch-card-index">03 / STRATEGY</span>
-      <h3>Planning the next move</h3><p>Clear roadmaps turn ambition into focused action.</p></figcaption>
-  </figure>
-</article>
-              <article class="branch-card branch-card-right">
-  <figure class="branch-card-figure">
-    <div class="branch-card-media"><img src="images/strategy-workshop.webp" alt="Business growth team workshop" loading="lazy" decoding="async" /></div>
-    <figcaption class="branch-card-copy"><span class="branch-card-index">04 / COLLABORATION</span>
-      <h3>Progress built together</h3><p>Shared insight creates stronger, faster decisions.</p></figcaption>
-  </figure>
-</article>
-            </li>
-<li class="branch-pair branch-pair-3" data-pair="2">
-              <article class="branch-card branch-card-left">
-  <figure class="branch-card-figure">
-    <div class="branch-card-media"><img src="images/keynote-event.webp" alt="Corporate business leadership presentation" loading="lazy" decoding="async" /></div>
-    <figcaption class="branch-card-copy"><span class="branch-card-index">05 / PERSPECTIVE</span>
-      <h3>Sharing a wider vision</h3><p>Leadership is the courage to communicate what comes next.</p></figcaption>
-  </figure>
-</article>
-              <article class="branch-card branch-card-right">
-  <figure class="branch-card-figure">
-    <div class="branch-card-media"><img src="images/portrait-office.webp" alt="Kawser Hamid at an executive desk" loading="lazy" decoding="async" /></div>
-    <figcaption class="branch-card-copy"><span class="branch-card-index">06 / PRESENCE</span>
-      <h3>Confidence in execution</h3><p>Calm presence helps turn ideas into decisive action.</p></figcaption>
-  </figure>
-</article>
-            </li>
-          </ol>
-        </div>
-      </div>
-      <div class="branch-footer container" aria-hidden="true">
-        <span class="branch-hint">SCROLL TO EXPLORE <span>↓</span></span>
-        <div class="branch-progress"><span id="branchProgress"></span></div>
-        <span class="branch-count" id="branchCount">01 <i>/ 03</i></span>
-      </div>
-    </div>
-  </div>
-</section>
+      <!-- LEADERSHIP / ORGANIC BRANCH STORY -->
+      <section class="leadership leadership-branch studio-section" data-studio="leadership" id="leadership" aria-labelledby="leadershipTitle">
+        <div class="branch-track" id="branchTrack">
+          <div class="branch-sticky">
+            <div class="branch-ambient" aria-hidden="true"></div>
+            <div class="branch-header container">
+              <div class="section-kicker"><span>03 / LEADERSHIP IN FOCUS</span><span class="kicker-line"></span></div>
+              <div class="branch-header-row">
+                <h2 id="leadershipTitle">A branch of <em>leadership.</em></h2>
+                <p>Scroll through a staggered 3D timeline where each branch reveals paired moments of leadership, trust, strategy and presence.</p>
+              </div>
+            </div>
 
+            <div class="branch-stage container" id="branchStage">
+              <div class="branch-world" id="branchWorld">
+                <div class="branch-world-glow" aria-hidden="true"></div>
+                <svg class="branch-spine-art" viewBox="0 0 220 1600" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="branchStroke" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="rgba(241,213,160,.10)" />
+                      <stop offset="35%" stop-color="rgba(241,213,160,.9)" />
+                      <stop offset="65%" stop-color="rgba(143,178,255,.68)" />
+                      <stop offset="100%" stop-color="rgba(241,213,160,.18)" />
+                    </linearGradient>
+                    <filter id="branchGlow" x="-40%" y="-10%" width="180%" height="120%">
+                      <feGaussianBlur stdDeviation="3.5" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  <path class="branch-spine-shadow" d="M110 30 C102 150 118 250 110 370 C101 495 118 617 110 770 C100 930 120 1090 110 1255 C104 1375 114 1485 110 1570" />
+                  <path class="branch-spine-line" d="M110 30 C102 150 118 250 110 370 C101 495 118 617 110 770 C100 930 120 1090 110 1255 C104 1375 114 1485 110 1570" />
+                  <g class="branch-clusters" filter="url(#branchGlow)">
+                    <path class="branch-arm" d="M110 315 C88 290 62 258 26 226" />
+                    <path class="branch-arm" d="M110 315 C138 336 166 362 196 402" />
+                    <circle class="branch-node-dot" cx="110" cy="315" r="10" />
+                    <circle class="branch-node-ring" cx="110" cy="315" r="24" />
+
+                    <path class="branch-arm" d="M110 805 C83 837 53 870 20 915" />
+                    <path class="branch-arm" d="M110 805 C142 777 170 748 198 710" />
+                    <circle class="branch-node-dot" cx="110" cy="805" r="10" />
+                    <circle class="branch-node-ring" cx="110" cy="805" r="24" />
+
+                    <path class="branch-arm" d="M110 1290 C82 1264 58 1234 24 1200" />
+                    <path class="branch-arm" d="M110 1290 C140 1316 166 1344 194 1386" />
+                    <circle class="branch-node-dot" cx="110" cy="1290" r="10" />
+                    <circle class="branch-node-ring" cx="110" cy="1290" r="24" />
+                  </g>
+                </svg>
+
+                <ol class="branch-pairs" aria-label="Leadership timeline in paired moments">
+                  <li class="branch-pair pair-1" data-pair="0">
+                    <article class="branch-card branch-card-left">
+                      <figure class="branch-card-figure">
+                        <div class="branch-card-media"><img src="images/leadership-meeting.webp" alt="Business leadership strategy meeting" loading="lazy" decoding="async" /></div>
+                        <figcaption class="branch-card-copy">
+                          <span class="branch-card-index">01 / LEADERSHIP</span>
+                          <h3>Leading with purpose</h3>
+                          <p>Great direction starts with the people around the table.</p>
+                        </figcaption>
+                      </figure>
+                    </article>
+                    <article class="branch-card branch-card-right">
+                      <figure class="branch-card-figure">
+                        <div class="branch-card-media"><img src="images/client-conversation.webp" alt="Business conversation in a modern Riyadh office" loading="lazy" decoding="async" /></div>
+                        <figcaption class="branch-card-copy">
+                          <span class="branch-card-index">02 / RELATIONSHIPS</span>
+                          <h3>Trust in every conversation</h3>
+                          <p>Strong business relationships begin with clarity and respect.</p>
+                        </figcaption>
+                      </figure>
+                    </article>
+                  </li>
+
+                  <li class="branch-pair pair-2" data-pair="1">
+                    <article class="branch-card branch-card-left">
+                      <figure class="branch-card-figure">
+                        <div class="branch-card-media"><img src="images/growth-presentation.webp" alt="Business growth strategy presentation" loading="lazy" decoding="async" /></div>
+                        <figcaption class="branch-card-copy">
+                          <span class="branch-card-index">03 / STRATEGY</span>
+                          <h3>Planning the next move</h3>
+                          <p>Clear roadmaps turn ambition into focused action.</p>
+                        </figcaption>
+                      </figure>
+                    </article>
+                    <article class="branch-card branch-card-right">
+                      <figure class="branch-card-figure">
+                        <div class="branch-card-media"><img src="images/strategy-workshop.webp" alt="Business growth team workshop" loading="lazy" decoding="async" /></div>
+                        <figcaption class="branch-card-copy">
+                          <span class="branch-card-index">04 / COLLABORATION</span>
+                          <h3>Progress built together</h3>
+                          <p>Shared insight creates stronger, faster decisions.</p>
+                        </figcaption>
+                      </figure>
+                    </article>
+                  </li>
+
+                  <li class="branch-pair pair-3" data-pair="2">
+                    <article class="branch-card branch-card-left">
+                      <figure class="branch-card-figure">
+                        <div class="branch-card-media"><img src="images/keynote-event.webp" alt="Corporate business leadership speech" loading="lazy" decoding="async" /></div>
+                        <figcaption class="branch-card-copy">
+                          <span class="branch-card-index">05 / PERSPECTIVE</span>
+                          <h3>Sharing a wider vision</h3>
+                          <p>Leadership is the courage to communicate what comes next.</p>
+                        </figcaption>
+                      </figure>
+                    </article>
+                    <article class="branch-card branch-card-right">
+                      <figure class="branch-card-figure">
+                        <div class="branch-card-media"><img src="images/portrait-office.webp" alt="Kawser Hamid at an executive desk" loading="lazy" decoding="async" /></div>
+                        <figcaption class="branch-card-copy">
+                          <span class="branch-card-index">06 / PRESENCE</span>
+                          <h3>Confidence in execution</h3>
+                          <p>Calm presence helps turn ideas into decisive action.</p>
+                        </figcaption>
+                      </figure>
+                    </article>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="branch-footer container" aria-hidden="true">
+              <span class="branch-hint">SCROLL THE BRANCH <span>↓</span></span>
+              <div class="branch-progress"><span id="branchProgress"></span></div>
+              <span class="branch-count" id="branchCount">01 <i>/ 03</i></span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- REFLECTION / PORTRAIT ROTATOR -->
-      <section class="portrait-chapter section-space" id="perspective" aria-labelledby="perspectiveTitle">
+      <section class="portrait-chapter section-space studio-section" data-studio="perspective" id="perspective" aria-labelledby="perspectiveTitle">
         <div class="container portrait-chapter-inner">
           <div class="portrait-chapter-copy" data-reveal>
             <div class="section-kicker"><span>THE PERSONAL PERSPECTIVE</span><span class="kicker-line"></span></div>
@@ -293,14 +487,15 @@
             <p>For me, business is as much about people and trust as it is about opportunity and growth.</p>
             <div class="perspective-switcher" role="group" aria-label="Choose portrait"><button class="perspective-dot active" data-portrait="0" aria-label="Portrait in green suit" aria-pressed="true"></button><button class="perspective-dot" data-portrait="1" aria-label="Portrait in burgundy suit" aria-pressed="false"></button><button class="perspective-dot" data-portrait="2" aria-label="Portrait in blue suit, seated forward" aria-pressed="false"></button><button class="perspective-dot" data-portrait="3" aria-label="Standing portrait in navy suit" aria-pressed="false"></button></div>
           </div>
-          <div class="perspective-image-frame" data-reveal="right"><span class="perspective-halo"></span><div class="perspective-img-wrap"><img id="perspectivePortrait" src="images/portrait-seated-olive.webp" alt="Kawser Hamid in a dark green suit" width="1086" height="1448" loading="lazy" /></div><span class="perspective-frame-label">CHARACTER / CONVICTION / CLARITY</span></div>
+          <div class="perspective-image-frame studio-perspective-visual" data-reveal="right"><span class="perspective-halo"></span><div class="perspective-img-wrap"><img id="perspectivePortrait" src="images/portrait-seated-olive.webp" alt="Kawser Hamid in a dark green suit" width="1086" height="1448" loading="lazy" /></div><span class="perspective-frame-label">CHARACTER / CONVICTION / CLARITY</span></div>
         </div>
       </section>
 
       <!-- PROCESS -->
-      <section class="approach section-space" id="approach" aria-labelledby="approachTitle">
+      <section class="approach section-space studio-section" data-studio="approach" id="approach" aria-labelledby="approachTitle">
         <div class="container">
           <div class="section-header" data-reveal><div><div class="section-kicker"><span>04 / MY APPROACH</span><span class="kicker-line"></span></div><h2 class="section-title" id="approachTitle">Clarity first.<br/><em>Progress always.</em></h2></div><p>Every conversation starts with understanding your priorities. Then we build a focused path forward together.</p></div>
+          <div class="studio-path-track" aria-hidden="true"><span class="studio-path-fill"></span></div>
           <div class="approach-stages">
             <article class="approach-stage" data-reveal><span class="stage-number">01</span><div class="stage-rule"></div><span class="stage-symbol">◎</span><h3>Understand</h3><p>Learn the ambition, the context and the real business challenge.</p></article>
             <article class="approach-stage" data-reveal><span class="stage-number">02</span><div class="stage-rule"></div><span class="stage-symbol">◇</span><h3>Structure</h3><p>Identify opportunities and frame an actionable direction.</p></article>
@@ -311,7 +506,8 @@
       </section>
 
       <!-- CONTACT -->
-      <section class="contact" id="contact" aria-labelledby="contactTitle">
+      <section class="contact studio-section" data-studio="contact" id="contact" aria-labelledby="contactTitle">
+        <div class="studio-contact-portal" aria-hidden="true"><span class="studio-portal-ring"></span><span class="studio-portal-ring two"></span></div>
         <div class="contact-glow" aria-hidden="true"></div>
         <div class="container contact-inner">
           <div class="contact-content" data-reveal>
@@ -329,5 +525,153 @@
 
     <footer class="footer"><div class="container"><div class="footer-main"><div><a class="footer-logo" href="#top">KH<span>.</span></a><p>Kawser Hamid<br/>Founder & CEO, KH Dream Services Ltd</p></div><div class="footer-nav"><a href="#about">About</a><a href="#expertise">Expertise</a><a href="#leadership">Leadership</a><a href="#contact">Contact</a></div><a class="footer-back" href="#top" aria-label="Back to top">↑</a></div><div class="footer-bottom"><span>© <span id="copyrightYear">2026</span> KAWSER HAMID. ALL RIGHTS RESERVED.</span><span>VISION <b>✳</b> TRUST <b>✳</b> IMPACT</span><span>MADE WITH PURPOSE.</span></div></div></footer>
   </div>
+  <script id="studio-motion-v3-script">
+(() => {
+  'use strict';
+  // Executive Dimension V3 — a single lightweight motion coordinator.
+  // Always preserves scrolling, links, keyboard focus, and reduced-motion access.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const coarsePointer = window.matchMedia('(hover:none), (pointer:coarse)').matches;
+  const mobile = window.matchMedia('(max-width: 960px)');
+  const sections = [...document.querySelectorAll('.studio-section')];
+  const headerLinks = [...document.querySelectorAll('.desktop-nav a')];
+  const hero = document.getElementById('hero');
+  const progress = document.querySelector('#studioProgress span');
+  const rail = document.getElementById('studioChapterRail');
+  const railLabel = rail?.querySelector('.rail-label');
+  const about = document.getElementById('about');
+  const vision = document.querySelector('.vision-feature');
+  const perspective = document.getElementById('perspective');
+  const contact = document.getElementById('contact');
+  const approach = document.getElementById('approach');
+  const statement = document.querySelector('.studio-statement');
+  const stages = [...document.querySelectorAll('.approach-stage')];
+  let frame = 0;
+
+  // Unlike the old full-screen KH portal, this entrance never conceals navigation.
+  // It begins on the actual Hero and remains skippable by normal scrolling.
+  if (!reduceMotion && (!location.hash || location.hash === '#top' || location.hash === '#hero')) {
+    document.body.classList.add('studio-arriving');
+    window.setTimeout(() => document.body.classList.remove('studio-arriving'), 2100);
+  }
+
+  const clamp = (x, lo = 0, hi = 1) => Math.max(lo, Math.min(hi, x));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  function viewProgress(el) {
+    if (!el) return null;
+    const rect = el.getBoundingClientRect();
+    const height = window.innerHeight || 1;
+    if (rect.bottom < -height * .5 || rect.top > height * 1.5) return null;
+    return { rect, t: clamp((height - rect.top) / (height + rect.height)), inView: rect.top < height && rect.bottom > 0 };
+  }
+  function setVar(el, name, value) {if(el) el.style.setProperty(name, value);}
+
+  function draw() {
+    frame = 0;
+    const y = window.scrollY;
+    const viewport = window.innerHeight || 1;
+    const total = Math.max(1, document.documentElement.scrollHeight - viewport);
+    const ratio = clamp(y / total);
+    if (progress) progress.style.transform = `scaleX(${ratio.toFixed(4)})`;
+    setVar(rail, '--rail-progress', ratio.toFixed(4));
+
+    const leadIndex = sections.reduce((selected, section, index) => {
+      const box = section.getBoundingClientRect();
+      return box.top < viewport * .48 ? index : selected;
+    }, 0);
+    const active = sections[leadIndex];
+    if (railLabel && active) {
+      const n = String(leadIndex + 1).padStart(2, '0');
+      railLabel.textContent = `${n} / ${String(active.dataset.studio || 'portfolio').toUpperCase()}`;
+    }
+    headerLinks.forEach(link => {
+      const target = link.getAttribute('href')?.slice(1);
+      const activeTarget = active?.id || '';
+      link.classList.toggle('studio-link-current', Boolean(target && target === activeTarget));
+    });
+
+    if (reduceMotion) return;
+    const mob = mobile.matches;
+    const intensity = mob ? .46 : 1;
+    const heroView = viewProgress(hero);
+    if (heroView) {
+      const scrollDelta = clamp(y / viewport, 0, 1);
+      setVar(hero, '--hero-scroll', scrollDelta.toFixed(3));
+      if (heroView.inView) {
+        const scale = 1 - scrollDelta * (mob ? .012 : .035);
+        setVar(hero, '--hero-ambient-scale', scale.toFixed(3));
+      }
+    }
+    const aboutView = viewProgress(about);
+    if (aboutView) {
+      const delta = aboutView.t - .5;
+      setVar(about, '--chapter-progress', aboutView.t.toFixed(3));
+      setVar(about, '--about-portrait-y', `${(delta * -40 * intensity).toFixed(2)}px`);
+      setVar(about, '--about-ring-y', `${(delta * 45 * intensity).toFixed(2)}px`);
+    }
+    const visionView = viewProgress(vision);
+    if (visionView) setVar(vision, '--vision-pan', `${(visionView.t - .5) * -74 * intensity}px`);
+    const portraitView = viewProgress(perspective);
+    if (portraitView) {
+      setVar(perspective, '--portrait-ambient', `${(portraitView.t - .5) * -40 * intensity}px`);
+      setVar(perspective, '--portrait-travel', `${(portraitView.t - .5) * -25 * intensity}px`);
+    }
+    const contactView = viewProgress(contact);
+    if (contactView) {
+      setVar(contact, '--contact-portal-y', `${(contactView.t - .5) * -60 * intensity}px`);
+      setVar(contact, '--contact-photo-y', `${(contactView.t - .5) * -38 * intensity}px`);
+    }
+    const approachView = viewProgress(approach);
+    if (approachView) {
+      const fill = clamp((approachView.t - .27) * 2.15);
+      setVar(approach, '--approach-progress', fill.toFixed(3));
+      stages.forEach((stage, index) => stage.classList.toggle('is-motion-current', index === Math.min(2, Math.floor(fill * 3)) && fill > .04));
+    }
+    const statementView = viewProgress(statement);
+    if (statementView) setVar(statement, '--statement-x', `${(statementView.t - .5) * -50 * intensity}px`);
+  }
+
+  function scheduleDraw() {if (frame) return; frame = requestAnimationFrame(draw);}
+  window.addEventListener('scroll', scheduleDraw, {passive:true});
+  window.addEventListener('resize', scheduleDraw, {passive:true});
+  window.addEventListener('load', scheduleDraw, {once:true});
+  scheduleDraw();
+
+  if (!reduceMotion && !coarsePointer) {
+    // A small light parallax, on the ambient layer only. The portrait's existing
+    // mouse-follow logic remains the sole controller of its 2.5D position.
+    if (hero) hero.addEventListener('pointermove', event => {
+      const box = hero.getBoundingClientRect();
+      const x = clamp((event.clientX - box.left) / box.width, 0, 1) * 2 - 1;
+      const y = clamp((event.clientY - box.top) / box.height, 0, 1) * 2 - 1;
+      setVar(hero, '--pointer-x', x.toFixed(3));
+      setVar(hero, '--pointer-y', y.toFixed(3));
+    }, {passive:true});
+    hero?.addEventListener('pointerleave', () => {
+      setVar(hero, '--pointer-x', '0');
+      setVar(hero, '--pointer-y', '0');
+    });
+
+    // Card rotation has a narrow angular range. Pointer lighting gives a richer
+    // 3D impression without WebGL, extra photos or perpetual rendering.
+    document.querySelectorAll('.studio-services .service-card').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        const nx = clamp((e.clientX - r.left) / r.width);
+        const ny = clamp((e.clientY - r.top) / r.height);
+        setVar(card, '--light-x', `${(nx * 100).toFixed(1)}%`);
+        setVar(card, '--light-y', `${(ny * 100).toFixed(1)}%`);
+        const rx = lerp(4.8, -4.8, ny);
+        const ry = lerp(-5.5, 5.5, nx);
+        card.style.transform = `perspective(1100px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translate3d(0,-7px,17px)`;
+      }, {passive:true});
+      card.addEventListener('pointerleave', () => {card.style.transform = '';});
+      card.addEventListener('focusin', () => card.classList.add('studio-focus'));
+      card.addEventListener('focusout', () => card.classList.remove('studio-focus'));
+    });
+  }
+})();
+
+  </script>
 </body>
 </html>

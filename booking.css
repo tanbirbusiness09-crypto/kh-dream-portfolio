@@ -88,3 +88,99 @@
   .site-header .header-contact{animation-delay:.69s}
   .site-header .mobile-nav.open > a:nth-child(6){animation-delay:.36s}
 }
+
+
+/* ================================================================
+   BOOKING DRAWER / Side-panel route with cinematic slide from right
+   ================================================================ */
+body.booking-drawer-open{overflow:hidden!important}
+.booking-overlay[hidden]{display:none!important}
+.booking-overlay{
+  position:fixed;inset:0;z-index:5000;display:flex;justify-content:flex-end;
+  visibility:hidden;pointer-events:none;isolation:isolate;
+  transition:visibility 0s linear .46s
+}
+.booking-overlay.is-active{visibility:visible;pointer-events:auto;transition-delay:0s}
+.booking-backdrop{
+  position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;
+  cursor:pointer;background:rgba(3,7,13,.72);backdrop-filter:blur(0);
+  -webkit-backdrop-filter:blur(0);opacity:0;
+  transition:opacity .52s ease,backdrop-filter .52s ease,-webkit-backdrop-filter .52s ease
+}
+.booking-overlay.is-active .booking-backdrop{opacity:1;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+.booking-drawer{
+  position:relative;z-index:1;width:min(700px,100vw);height:100%;height:100dvh;
+  background:radial-gradient(ellipse at 95% 4%,rgba(61,75,96,.36),transparent 45%),#0a121d;
+  border-left:1px solid rgba(223,190,136,.37);
+  box-shadow:-32px 0 100px rgba(0,0,0,.52),inset 1px 0 rgba(255,255,255,.04);
+  overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#544a3f #101923;
+  transform:translate3d(103%,0,0);opacity:.93;
+  transition:transform .75s cubic-bezier(.18,.86,.17,1),opacity .55s ease;
+  will-change:transform;outline:none
+}
+.booking-overlay.is-active .booking-drawer{transform:translate3d(0,0,0);opacity:1}
+.booking-drawer-top{
+  position:sticky;top:0;z-index:8;display:flex;justify-content:space-between;align-items:center;
+  gap:22px;min-height:78px;padding:17px clamp(20px,5vw,40px);
+  background:rgba(10,18,29,.93);border-bottom:1px solid rgba(230,197,144,.16);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)
+}
+.booking-drawer-brand{font-size:11px;letter-spacing:.22em;font-weight:750;color:#e4c894}
+.booking-drawer-brand small{display:block;color:#94a1af;font-size:9px;font-weight:400;letter-spacing:.13em;margin-top:5px}
+.booking-drawer-close{
+  display:flex;align-items:center;justify-content:center;gap:11px;
+  border:1px solid rgba(222,185,123,.29);background:rgba(255,255,255,.035);
+  color:#f0e5d3;padding:10px 13px;font:inherit;font-size:10px;letter-spacing:.13em;
+  cursor:pointer;transition:border-color .25s,background .25s,transform .25s
+}
+.booking-drawer-close span{font-size:20px;line-height:1;color:#e3c48f}
+.booking-drawer-close:hover{background:rgba(217,184,129,.12);border-color:#d9b881;transform:translateY(-2px)}
+.booking-drawer-close:focus-visible{outline:2px solid #f1d39d;outline-offset:4px}
+.booking-overlay .booking-section{
+  padding:28px 0 55px!important;overflow:visible;background:none!important;
+  border:0!important;min-height:0;isolation:auto
+}
+.booking-overlay .booking-section::before,.booking-overlay .booking-section::after{display:none!important}
+.booking-overlay .booking-shell{
+  display:block!important;width:100%;max-width:none;
+  padding:0 clamp(21px,5.2vw,42px);margin:0;transform:none!important
+}
+.booking-overlay .booking-intro{max-width:100%;opacity:1!important;transform:none!important}
+.booking-overlay .booking-intro .section-kicker{margin:0 0 15px}
+.booking-overlay .booking-intro h2{
+  font-size:clamp(2.7rem,4.5vw,4.15rem);line-height:1.02;margin:0 0 17px
+}
+.booking-overlay .booking-intro>p{max-width:560px;font-size:12px;line-height:1.85;margin:0}
+.booking-overlay .booking-accent{margin-top:21px;font-size:9px;gap:10px}
+.booking-overlay .booking-accent span{width:30px;height:30px;font-size:15px}
+.booking-overlay .booking-card{
+  max-width:none;width:100%;margin-top:30px;padding:clamp(21px,4.2vw,34px);
+  transform:none!important;opacity:1!important;background:linear-gradient(155deg,rgba(30,40,55,.91),rgba(12,20,32,.96))
+}
+.booking-overlay .booking-form{gap:16px}
+.booking-overlay .booking-form-grid{gap:14px}
+.booking-overlay .booking-field{gap:8px}
+.booking-overlay .booking-field input,.booking-overlay .booking-field select,
+.booking-overlay .booking-field textarea{min-height:51px}
+.booking-overlay .booking-field textarea{min-height:84px}
+.booking-overlay .booking-consent{font-size:10.5px}
+.booking-overlay .booking-meta{font-size:10.5px}
+.booking-overlay .booking-card-head{margin-bottom:20px}
+.booking-overlay .booking-card-title{font-size:clamp(1.35rem,2.8vw,1.8rem)}
+.booking-overlay .booking-card-mark{font-size:10px}
+.booking-overlay .booking-copy{text-align:left}
+@media(max-width:700px){
+  .booking-drawer{width:100vw;border-left:0}
+  .booking-drawer-top{min-height:68px;padding:13px 18px}
+  .booking-overlay .booking-section{padding:23px 0 40px!important}
+  .booking-overlay .booking-shell{padding:0 19px}
+  .booking-overlay .booking-intro h2{font-size:clamp(2.65rem,10.5vw,4.1rem)}
+  .booking-overlay .booking-card{padding:22px 18px;margin-top:25px}
+  .booking-overlay .booking-form-grid{grid-template-columns:1fr;gap:14px}
+  .booking-overlay .booking-accent{letter-spacing:.12em}
+}
+@media(prefers-reduced-motion:reduce){
+  .booking-overlay,.booking-overlay .booking-backdrop,.booking-overlay .booking-drawer,
+  .booking-drawer-close{transition:none!important;animation:none!important}
+  .booking-overlay.is-active .booking-drawer{transform:none;opacity:1}
+}

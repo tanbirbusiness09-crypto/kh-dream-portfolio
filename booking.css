@@ -81,3 +81,10 @@
 .btn:hover{transform:translate3d(0,-3px,0);box-shadow:0 15px 35px rgba(0,0,0,.14)}
 .btn:active{transform:translateY(-1px) scale(.995)}
 @media(prefers-reduced-motion:reduce){.btn,.site-header .desktop-nav a::after,.site-header .header-contact{transition:none!important}}
+
+/* The fifth desktop link and sixth mobile link must join the refresh choreography. */
+@media(prefers-reduced-motion:no-preference){
+  .site-header .desktop-nav > a:nth-child(5){animation-delay:.59s}
+  .site-header .header-contact{animation-delay:.69s}
+  .site-header .mobile-nav.open > a:nth-child(6){animation-delay:.36s}
+}

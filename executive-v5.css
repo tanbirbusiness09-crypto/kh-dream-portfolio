@@ -1,0 +1,69 @@
+/* EXECUTIVE DIMENSION V5 · PHASE 1 — cinematic identity system.
+   Keeps original portrait pixels, leadership and booking flow unchanged. */
+:root{--v5-ink:#04070c;--v5-gold:#e4c38c;--v5-edge:rgba(235,196,129,.19);--v5-ease:cubic-bezier(.16,1,.3,1)}
+html,body,.site-shell{background:var(--v5-ink)}
+.hero{--v5-x:71%;--v5-y:43%;--v5-travel:0px;background:radial-gradient(ellipse 44% 54% at 78% 55%,rgba(44,72,112,.40),transparent 75%),linear-gradient(115deg,#03060b 8%,#070d18 53%,#03060a 100%)!important;isolation:isolate}
+.hero::before{background:radial-gradient(ellipse 40% 47% at 72% 46%,rgba(221,176,111,.12),transparent 75%);opacity:.65;animation:none}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 32% 48% at var(--v5-x) var(--v5-y),rgba(233,197,133,.13),transparent 73%),linear-gradient(100deg,transparent 40%,rgba(136,173,214,.022) 70%,transparent);opacity:.9;transform:translate3d(0,var(--v5-travel),0)}
+.hero .hero-mesh{opacity:.2}
+.hero .hero-grid{opacity:.055;mask-image:linear-gradient(90deg,transparent,black 45%,black 86%,transparent)}
+.hero .studio-horizon{border-color:rgba(231,189,119,.14)!important}
+.hero .studio-horizon-secondary{border-color:rgba(140,174,214,.1)!important}
+.hero .hero-content{isolation:isolate}
+.hero .hero-intro{z-index:7}
+.hero .eyebrow{color:#e0c99f;letter-spacing:.2em}
+.hero .hero-pretitle{color:#c9c3bc}
+.hero h1{color:#f7f2eb;text-shadow:0 18px 60px rgba(0,0,0,.58);text-wrap:nowrap}
+.hero h1>span{color:#e5bd7d}
+.hero h1 .h1-period{color:#f8efe3!important}
+.hero .hero-role{color:#dedbd3}
+.hero .hero-description{color:#bbc4ce;max-width:460px}
+.hero .hero-visual{isolation:isolate;transform-style:preserve-3d}
+.hero .hero-visual::before{content:"";position:absolute;z-index:0;pointer-events:none;width:104%;aspect-ratio:1;top:12%;right:-10%;border-radius:50%;border:1px solid rgba(236,197,133,.19);box-shadow:0 0 130px rgba(211,160,93,.05),inset 0 0 145px rgba(55,84,126,.12);transform:rotate(-18deg) rotateY(19deg);mask-image:linear-gradient(130deg,transparent 7%,black 40%,black 80%,transparent 98%)}
+.hero .hero-visual::after{content:"";position:absolute;inset:15% -14% 8% 15%;pointer-events:none;z-index:2;background:radial-gradient(ellipse 44% 41% at 67% 42%,rgba(234,184,111,.11),transparent 85%);opacity:.9}
+.hero .studio-chassis-core{background:radial-gradient(ellipse at 57% 43%,rgba(226,190,127,.16),rgba(47,74,112,.11) 46%,transparent 75%)}
+.hero .studio-chassis-floor{opacity:.58}
+.hero .hero-orbit{border-color:rgba(239,204,153,.21)}
+.hero .hero-spotlight{opacity:.83;filter:blur(13px);background:radial-gradient(ellipse,rgba(248,205,136,.23),rgba(53,75,111,.08) 48%,transparent 73%)}
+/* Photo source and face are unchanged; only nondestructive whole-image lighting. */
+.hero img.hero-person{z-index:4;filter:brightness(1.055) contrast(1.045) saturate(.99) drop-shadow(5px 2px 1px rgba(238,198,144,.15)) drop-shadow(27px 34px 39px rgba(0,0,0,.58));image-rendering:auto;backface-visibility:hidden}
+.hero .hero-visual-label{z-index:5;color:#dccab1}
+.hero .hero-footer{border-color:var(--v5-edge)}
+.hero .hero-credentials{color:#b2bdca}
+@keyframes v5-aura-drift{0%{transform:rotate(-18deg) rotateY(19deg) scale(.99);opacity:.66}100%{transform:rotate(-11deg) rotateY(14deg) scale(1.025);opacity:.92}}
+@media(prefers-reduced-motion:no-preference){.hero .hero-visual::before{animation:v5-aura-drift 11s ease-in-out infinite alternate}}
+.site-header{border-bottom:1px solid rgba(225,194,145,.18);background:linear-gradient(115deg,rgba(3,6,10,.89),rgba(9,15,24,.78));box-shadow:0 14px 50px rgba(0,0,0,.18)}
+.site-header.scrolled{background:rgba(4,8,13,.97);box-shadow:0 15px 45px rgba(0,0,0,.45)}
+.site-header .brand-symbol{text-shadow:0 0 24px rgba(227,184,119,.19)}
+.site-header .desktop-nav a:hover,.site-header .desktop-nav a:focus-visible{color:#f3d6a5}
+.btn-gold,.booking-submit{box-shadow:0 9px 27px rgba(200,153,87,.13)}
+.btn-gold:hover,.booking-submit:hover{box-shadow:0 16px 43px rgba(209,165,99,.24)}
+.btn-outline:hover{border-color:rgba(238,202,146,.68);background:rgba(226,191,128,.07)}
+.about .image-architecture,.portrait-chapter .perspective-image-frame{box-shadow:0 40px 90px rgba(0,0,0,.5),inset 0 1px 0 rgba(248,211,153,.07)}
+.about .image-architecture-ring,.portrait-chapter .perspective-halo{border-color:rgba(234,196,138,.22)}
+.expertise .service-card{border-color:rgba(221,183,120,.20);transition:border-color .4s,box-shadow .55s var(--v5-ease),background .55s var(--v5-ease),transform .5s var(--v5-ease)}
+.expertise .service-card:hover{border-color:rgba(249,215,163,.57);box-shadow:0 35px 90px rgba(0,0,0,.54),0 0 40px rgba(235,181,104,.045)}
+.expertise .service-card::after{pointer-events:none}
+.leadership-editorial .story-moment img{filter:brightness(.91) contrast(1.055) saturate(.97)}
+.leadership-editorial .story-moment:hover img{filter:brightness(1.01) contrast(1.04)}
+.booking-drawer{box-shadow:-33px 0 100px rgba(0,0,0,.5)}
+.booking-drawer .booking-card{border-color:rgba(235,201,145,.27)}
+.contact .contact-visual img{filter:brightness(1.02) drop-shadow(24px 30px 40px rgba(0,0,0,.5))}
+.studio-section .section-kicker .kicker-line{transform-origin:left;transition:transform .85s var(--v5-ease)}
+.studio-section:not([data-v5-active="true"]) .section-kicker .kicker-line{transform:scaleX(.65)}
+@media(max-width:960px){
+.hero::after{opacity:.52}
+.hero .hero-visual::before{width:110%;top:15%;right:-13%;opacity:.55;animation:none}
+.hero .hero-visual::after{opacity:.43}
+.hero img.hero-person{filter:brightness(1.045) contrast(1.025) drop-shadow(12px 19px 28px rgba(0,0,0,.47))}
+.hero .hero-grid{opacity:.035}
+}
+@media(max-width:640px){
+.hero::after{opacity:.25}
+.hero .hero-visual::before{top:18%;right:-19%;width:128%;opacity:.35}
+.hero .hero-visual::after{opacity:.25}
+.hero h1{text-shadow:0 12px 35px rgba(0,0,0,.48)}
+.hero .hero-credentials{color:#a3aebb}
+.site-header{background:rgba(4,8,13,.95)}
+}
+@media(prefers-reduced-motion:reduce){.hero::after,.hero .hero-visual::before,.hero .hero-visual::after{animation:none!important;transition:none!important}.studio-section .section-kicker .kicker-line{transition:none}}

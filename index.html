@@ -12,9 +12,37 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preload" href="images/portrait-standing-blue.webp" as="image" type="image/webp" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="entrance.css" />
+  <script>
+    (() => {
+      try {
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const deepLink = location.hash && !['#top', '#hero'].includes(location.hash);
+        const previouslySeen = sessionStorage.getItem('kh-intro-complete') === '1';
+        if (!reduced && !deepLink && !previouslySeen) document.documentElement.classList.add('motion-intro');
+      } catch (_) {}
+    })();
+  </script>
   <script defer src="script.js"></script>
+  <script defer src="entrance.js"></script>
 </head>
 <body>
+  <div class="entry-portal" id="entryPortal" role="region" aria-label="Kawser Hamid cinematic website introduction" hidden>
+    <div class="entry-grid" aria-hidden="true"></div>
+    <div class="entry-halo" aria-hidden="true"></div>
+    <div class="entry-center" aria-hidden="true">
+      <div class="entry-orbit entry-orbit-a"></div>
+      <div class="entry-orbit entry-orbit-b"></div>
+      <div class="entry-orbit entry-orbit-c"></div>
+      <div class="entry-core">
+        <div class="entry-mark">KH<span>.</span></div>
+        <div class="entry-line"></div>
+        <div class="entry-caption">KAWSER HAMID</div>
+      </div>
+    </div>
+    <div class="entry-bottom" aria-hidden="true">VISION &nbsp; • &nbsp; LEADERSHIP &nbsp; • &nbsp; IMPACT</div>
+    <button type="button" class="entry-skip" id="entrySkip">Skip intro ↗</button>
+  </div>
   <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
   <div class="site-shell" id="top">
     <header class="site-header" id="siteHeader">

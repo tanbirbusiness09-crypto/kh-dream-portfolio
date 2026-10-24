@@ -362,6 +362,13 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
   <script defer src="executive-v5-complete.js"></script>
+  <!-- English / Bengali interface and animated FAQ (progressive enhancement). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="language-faq.css" />
+  <script defer src="bn-dictionary.js"></script>
+  <script defer src="bilingual-faq.js"></script>
 </head>
 <body>
   <div class="studio-progress" id="studioProgress" aria-hidden="true"><span></span></div>
@@ -383,6 +390,7 @@ body.studio-arriving .site-header{animation:studio-quiet-in .8s var(--studio-eas
           <a href="/booking">Booking</a>
         </nav>
         <a class="header-contact" href="/booking">Book consultation <span aria-hidden="true">↗</span></a>
+        <button type="button" class="kh-language-switcher" id="khLanguageSwitcher" aria-label="ওয়েবসাইট বাংলায় দেখুন" title="ওয়েবসাইট বাংলায় দেখুন"><span class="kh-lang-en kh-lang-active" lang="en">EN</span><span class="kh-lang-divider" aria-hidden="true">/</span><span class="kh-lang-bn kh-lang-inactive" lang="bn">বাংলা</span></button>
         <button class="mobile-menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
       </div>
       <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation" inert>
